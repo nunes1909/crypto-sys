@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tvDetalhesCoinTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="80sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/containerMaiorPreco"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.3"
+        app:layout_constraintVertical_chainStyle="packed"
+        tools:text="BTC" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/containerMaiorPreco"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="#b2b2b2"
+        app:layout_constraintBottom_toTopOf="@+id/containerMenorPreco"
+        app:layout_constraintEnd_toEndOf="@id/tvDetalhesCoinTitle"
+        app:layout_constraintStart_toStartOf="@id/tvDetalhesCoinTitle"
+        app:layout_constraintTop_toBottomOf="@+id/tvDetalhesCoinTitle">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvDetalhesInfoMaiorPreco"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:text="Maior preço nas ultimas 24 hrs"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvDetalhesMaiorPreco"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:textColor="@color/black"
+                tools:text="$ 2.000" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/containerMenorPreco"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="#b2b2b2"
+        app:layout_constraintBottom_toTopOf="@+id/containerPrecoAtual"
+        app:layout_constraintEnd_toEndOf="@id/containerMaiorPreco"
+        app:layout_constraintStart_toStartOf="@id/containerMaiorPreco"
+        app:layout_constraintTop_toBottomOf="@+id/containerMaiorPreco">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvDetalhesInfoMenorPreco"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:text="Menor preço nas ultimas 24 hrs"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvDetalhesMenorPreco"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:textColor="@color/black"
+                tools:text="$ 2.000" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/containerPrecoAtual"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="#b2b2b2"
+        app:layout_constraintBottom_toTopOf="@+id/btnDetalhesNegociar"
+        app:layout_constraintEnd_toEndOf="@id/containerMenorPreco"
+        app:layout_constraintStart_toStartOf="@id/containerMenorPreco"
+        app:layout_constraintTop_toBottomOf="@+id/containerMenorPreco">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvDetalhesInfoPrecoAtual"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:text="Preço atual"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/tvDetalhesInfoMaiorPreco"
+                app:layout_constraintTop_toBottomOf="@id/tvDetalhesMaiorPreco" />
+
+            <TextView
+                android:id="@+id/tvDetalhesPrecoAtual"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:textColor="@color/black"
+                tools:text="$ 2.000" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <Button
+        android:id="@+id/btnDetalhesNegociar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="#E8E6E6"
+        android:text="Negociar"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="@+id/containerPrecoAtual"
+        app:layout_constraintStart_toStartOf="@+id/containerPrecoAtual"
+        app:layout_constraintTop_toBottomOf="@+id/containerPrecoAtual" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
