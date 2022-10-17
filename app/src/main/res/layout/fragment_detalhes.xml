@@ -10,15 +10,16 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        app:layout_constraintVertical_bias="0.3"
         android:layout_marginEnd="16dp"
         android:textAlignment="center"
+        android:textColor="@color/black"
         android:textSize="80sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/containerMaiorPreco"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.3"
         app:layout_constraintVertical_chainStyle="packed"
         tools:text="BTC" />
 
@@ -106,7 +107,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:backgroundTint="#b2b2b2"
-        app:layout_constraintBottom_toTopOf="@+id/btnComprar"
+        app:layout_constraintBottom_toTopOf="@+id/btnDetalhesNegociar"
         app:layout_constraintEnd_toEndOf="@id/containerMenorPreco"
         app:layout_constraintStart_toStartOf="@id/containerMenorPreco"
         app:layout_constraintTop_toBottomOf="@+id/containerMenorPreco">
@@ -142,29 +143,15 @@
     </androidx.cardview.widget.CardView>
 
     <Button
-        android:id="@+id/btnComprar"
+        android:id="@+id/btnDetalhesNegociar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:backgroundTint="#4CAF50"
-        android:text="Comprar"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btnVender"
-        app:layout_constraintHorizontal_bias="0.5"
+        android:backgroundTint="#E8E6E6"
+        android:text="Negociar"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="@+id/containerPrecoAtual"
         app:layout_constraintStart_toStartOf="@+id/containerPrecoAtual"
-        app:layout_constraintTop_toBottomOf="@+id/containerPrecoAtual" />
-
-    <Button
-        android:id="@+id/btnVender"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:backgroundTint="#F44336"
-        android:text="Vender"
-        app:layout_constraintEnd_toEndOf="@id/containerPrecoAtual"
-        app:layout_constraintStart_toEndOf="@+id/btnComprar"
         app:layout_constraintTop_toBottomOf="@+id/containerPrecoAtual" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
