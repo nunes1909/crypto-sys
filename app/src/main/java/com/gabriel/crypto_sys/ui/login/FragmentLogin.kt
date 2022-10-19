@@ -1,19 +1,27 @@
-package com.gabriel.crypto_sys.ui.fragment
+package com.gabriel.crypto_sys.ui.login
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.gabriel.crypto_sys.databinding.FragmentLoginBinding
-import com.gabriel.crypto_sys.model.Usuario
-import com.gabriel.crypto_sys.ui.base.BaseFragment
-import com.gabriel.crypto_sys.ui.extensions.snackBar
-import com.gabriel.crypto_sys.ui.viewModel.LoginViewModel
+import com.gabriel.crypto_sys.data.remote.usuario.model.Usuario
+import com.gabriel.crypto_sys.utils.extensions.snackBar
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class FragmentLogin : BaseFragment<FragmentLoginBinding, LoginViewModel>() {
+class FragmentLogin : Fragment() {
 
-    override val viewModel: LoginViewModel by viewModel()
+    private val viewModel: LoginViewModel by viewModel()
+    private val binding by lazy { FragmentLoginBinding.inflate(layoutInflater) }
+    private val controller by lazy { findNavController() }
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View = binding.root
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -82,10 +90,4 @@ class FragmentLogin : BaseFragment<FragmentLoginBinding, LoginViewModel>() {
             controller.navigate(action)
         }
     }
-
-    override fun getViewBinding(
-        inflater: LayoutInflater,
-        container: ViewGroup?
-    ): FragmentLoginBinding =
-        FragmentLoginBinding.inflate(layoutInflater, container, false)
 }

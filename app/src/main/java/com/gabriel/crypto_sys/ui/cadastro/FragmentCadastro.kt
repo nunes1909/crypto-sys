@@ -1,19 +1,19 @@
-package com.gabriel.crypto_sys.ui.fragment
+package com.gabriel.crypto_sys.ui.cadastro
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.gabriel.crypto_sys.databinding.FragmentCadastroUsuarioBinding
-import com.gabriel.crypto_sys.model.Usuario
-import com.gabriel.crypto_sys.ui.base.BaseFragment
-import com.gabriel.crypto_sys.ui.extensions.snackBar
-import com.gabriel.crypto_sys.ui.viewModel.CadastroViewModel
+import com.gabriel.crypto_sys.data.remote.usuario.model.Usuario
+import com.gabriel.crypto_sys.utils.extensions.snackBar
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class FragmentCadastro : BaseFragment<FragmentCadastroUsuarioBinding, CadastroViewModel>() {
+class FragmentCadastro : Fragment() {
 
-    override val viewModel: CadastroViewModel by viewModel()
+    private val viewModel: CadastroViewModel by viewModel()
+    private val binding by lazy { FragmentCadastroUsuarioBinding.inflate(layoutInflater) }
+    private val controller by lazy { findNavController() }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -82,10 +82,4 @@ class FragmentCadastro : BaseFragment<FragmentCadastroUsuarioBinding, CadastroVi
         etSenhaCadastro.error = null
         etSenhaConfirmaCadastro.error = null
     }
-
-    override fun getViewBinding(
-        inflater: LayoutInflater,
-        container: ViewGroup?
-    ): FragmentCadastroUsuarioBinding =
-        FragmentCadastroUsuarioBinding.inflate(layoutInflater, container, false)
 }

@@ -1,23 +1,28 @@
-package com.gabriel.crypto_sys.ui.fragment
+package com.gabriel.crypto_sys.ui.coins
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.fragment.findNavController
+import androidx.lifecycle.lifecycleScope
 import com.gabriel.crypto_sys.databinding.FragmentCoinsBinding
 import com.gabriel.crypto_sys.ui.base.BaseFragment
-import com.gabriel.crypto_sys.ui.viewModel.CoinsViewModel
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
+import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class CoinsFragment : BaseFragment<FragmentCoinsBinding, CoinsViewModel>() {
+class FragmentCoins : BaseFragment<FragmentCoinsBinding, CoinsViewModel>() {
 
     override val viewModel: CoinsViewModel by viewModel()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        getAll()
+    }
+
+    private fun getAll() = lifecycleScope.launch {
+        viewModel.loadALl().observe(viewLifecycleOwner) {
+
+        }
     }
 
     override fun getViewBinding(
