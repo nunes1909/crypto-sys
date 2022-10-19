@@ -11,7 +11,6 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="6dp"
-        android:visibility="gone"
         app:endIconMode="clear_text"
         app:layout_constraintBottom_toTopOf="@+id/rvListCoins"
         app:layout_constraintEnd_toEndOf="parent"
@@ -24,7 +23,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Pesquisa"
-            android:inputType="textEmailAddress" />
+            android:inputType="textCapWords" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.recyclerview.widget.RecyclerView
