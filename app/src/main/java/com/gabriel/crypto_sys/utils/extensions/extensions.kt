@@ -20,3 +20,12 @@ fun View.show() {
 fun View.hide() {
     visibility = View.GONE
 }
+
+fun String.limitValue(limit: Int, ellipsize: Boolean): String {
+    val ellEnd = if (ellipsize) "..." else ""
+    if (this.length > limit) {
+        val first = 0
+        return "${this.substring(first, limit)}$ellEnd"
+    }
+    return this
+}

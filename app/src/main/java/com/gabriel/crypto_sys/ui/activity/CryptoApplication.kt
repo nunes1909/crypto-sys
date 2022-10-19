@@ -41,6 +41,7 @@ class CryptoApplication : Application() {
 
     private suspend fun salvaCoin() {
         try {
+            dao.deletaCoin()
             dao.salvaCoin(
                 Coin(cod = "AAVE", title = "Aave"),
                 Coin(cod = "ACH", title = "Alchemy Pay"),

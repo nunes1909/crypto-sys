@@ -10,22 +10,37 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="115dp">
+        android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/tvItemCoinTitle"
+            android:id="@+id/tvItemCoinCod"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:textSize="80sp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="12dp"
+            android:textSize="50sp"
             android:textStyle="bold"
             app:drawableEndCompat="@drawable/ic_action_right"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/tvItemCoinTitle"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="BTC" />
+
+        <TextView
+            android:id="@+id/tvItemCoinTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/tvItemCoinCod"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toStartOf="@id/tvItemCoinCod"
+            app:layout_constraintTop_toBottomOf="@id/tvItemCoinCod"
+            tools:text="Bitcoin" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
