@@ -2,7 +2,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/coinsFragment">
+    app:startDestination="@id/fragmentLogin">
 
     <fragment
         android:id="@+id/coinsFragment"
@@ -38,8 +38,12 @@
         android:name="com.gabriel.crypto_sys.ui.fragment.FragmentLogin"
         android:label="FragmentLogin" >
         <action
-            android:id="@+id/action_fragmentLogin_to_fragmentCadastro"
-            app:destination="@id/fragmentCadastro" />
+            android:id="@+id/acaoLoginParaCadastro"
+            app:destination="@id/fragmentCadastro"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
         <action
             android:id="@+id/acaoLoginParaCoins"
             app:destination="@id/coinsFragment"

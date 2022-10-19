@@ -15,7 +15,6 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class CoinsFragment : BaseFragment<FragmentCoinsBinding, CoinsViewModel>() {
 
     override val viewModel: CoinsViewModel by viewModel()
-    private val controller by lazy { findNavController() }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
