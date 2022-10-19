@@ -2,8 +2,8 @@ package com.gabriel.crypto_sys.repository
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.gabriel.crypto_sys.model.Usuario
-import com.gabriel.crypto_sys.ui.state.ResourceState
+import com.gabriel.crypto_sys.data.remote.usuario.model.Usuario
+import com.gabriel.crypto_sys.utils.state.ResourceState
 import com.google.firebase.auth.*
 import java.lang.IllegalArgumentException
 
@@ -59,5 +59,17 @@ class FirebaseRepository(private val firebaseAuth: FirebaseAuth) {
         is FirebaseAuthInvalidUserException,
         is FirebaseAuthInvalidCredentialsException -> "E-mail ou senha incorretos"
         else -> "Erro desconhecido"
+    }
+
+    fun estaLogado(): Boolean {
+        val userAtual = firebaseAuth.currentUser
+        if (userAtual != null) {
+            return true
+        }
+        return false
+    }
+
+    fun desloga() {
+        firebaseAuth.signOut()
     }
 }

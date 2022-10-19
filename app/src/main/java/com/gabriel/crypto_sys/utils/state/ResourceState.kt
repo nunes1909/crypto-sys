@@ -1,4 +1,4 @@
-package com.gabriel.crypto_sys.ui.state
+package com.gabriel.crypto_sys.utils.state
 
 sealed class ResourceState<T>(
     val data: T? = null,

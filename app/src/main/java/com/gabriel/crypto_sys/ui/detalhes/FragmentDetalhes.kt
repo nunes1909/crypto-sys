@@ -1,4 +1,4 @@
-package com.gabriel.crypto_sys.ui.fragment
+package com.gabriel.crypto_sys.ui.detalhes
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import com.gabriel.crypto_sys.databinding.FragmentDetalhesBinding
 import com.gabriel.crypto_sys.ui.base.BaseFragment
-import com.gabriel.crypto_sys.ui.viewModel.DetalhesViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class FragmentDetalhes : BaseFragment<FragmentDetalhesBinding, DetalhesViewModel>() {

@@ -1,14 +1,20 @@
-package com.gabriel.crypto_sys.ui.viewModel
+package com.gabriel.crypto_sys.ui.login
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
-import com.gabriel.crypto_sys.model.Usuario
+import com.gabriel.crypto_sys.data.remote.usuario.model.Usuario
 import com.gabriel.crypto_sys.repository.FirebaseRepository
-import com.gabriel.crypto_sys.ui.state.ResourceState
+import com.gabriel.crypto_sys.utils.state.ResourceState
 
 class LoginViewModel(private val repository: FirebaseRepository) : ViewModel() {
 
     fun autentica(usuario: Usuario): LiveData<ResourceState<Boolean>> {
         return repository.autenticaUsuario(usuario = usuario)
+    }
+
+    fun estaLogado() = repository.estaLogado()
+
+    fun desloga() {
+        repository.desloga()
     }
 }
