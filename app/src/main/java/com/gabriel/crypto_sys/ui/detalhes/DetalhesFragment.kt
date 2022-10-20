@@ -59,7 +59,7 @@ class DetalhesFragment : BaseFragment<FragmentDetalhesBinding, DetalhesViewModel
     private fun preencheDetalhes(resource: ResourceState<CoinResponse>) = with(binding) {
         resource.data?.let { coinResponse ->
             tvDetalhesCoinTitle.text = args.coin.cod
-            
+
             val menorPreco = coinResponse.menorPreco.roundToInt() / 100.00
             tvDetalhesMaiorPreco.text = "R$ $menorPreco"
 

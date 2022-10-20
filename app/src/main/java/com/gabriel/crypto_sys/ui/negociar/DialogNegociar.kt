@@ -27,4 +27,12 @@ class DialogNegociar : DialogFragment() {
     private fun configuraComponentes(binding: DialogNegociarBinding) {
         binding.tvNegociarPrecoAtual.text = args.precoAtual
     }
+
+    /**
+     * informações para exibir no dialog
+     * valor atual
+     * saldo atual
+     * total investido -> ao vender
+     * valor total
+     */
 }
