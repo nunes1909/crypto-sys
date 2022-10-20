@@ -5,11 +5,11 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.gabriel.crypto_sys.databinding.FragmentCadastroUsuarioBinding
-import com.gabriel.crypto_sys.data.remote.usuario.model.Usuario
+import com.gabriel.crypto_sys.data.remote.firebase.model.Usuario
 import com.gabriel.crypto_sys.utils.extensions.snackBar
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class FragmentCadastro : Fragment() {
+class CadastroFragment : Fragment() {
 
     private val viewModel: CadastroViewModel by viewModel()
     private val binding by lazy { FragmentCadastroUsuarioBinding.inflate(layoutInflater) }
@@ -47,7 +47,7 @@ class FragmentCadastro : Fragment() {
             resource?.data?.let { state ->
                 if (state) {
                     view?.snackBar(mensagem = "Cadastro realizado com sucesso")
-                    val action = FragmentCadastroDirections.acaoGlobalParaLogin()
+                    val action = CadastroFragmentDirections.acaoGlobalParaLogin()
                     controller.navigate(action)
                 } else {
                     view?.snackBar(mensagem = resource.message ?: "Falha no cadastro")

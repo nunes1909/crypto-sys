@@ -14,12 +14,13 @@
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="80sp"
+        android:background="#b2b2b2"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/containerMaiorPreco"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.3"
+        app:layout_constraintVertical_bias="0.5"
         app:layout_constraintVertical_chainStyle="packed"
         tools:text="BTC" />
 
@@ -150,6 +151,7 @@
         android:backgroundTint="#E8E6E6"
         android:text="Negociar"
         android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/containerPrecoAtual"
         app:layout_constraintStart_toStartOf="@+id/containerPrecoAtual"
         app:layout_constraintTop_toBottomOf="@+id/containerPrecoAtual" />

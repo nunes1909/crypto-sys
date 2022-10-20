@@ -12,6 +12,18 @@
         android:layout_margin="16dp">
 
         <TextView
+            android:id="@+id/tvNegociarInfoPrecoAtual"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#4CAF50"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/tvNegociarPrecoAtual"
+            app:layout_constraintBottom_toTopOf="@+id/tvNegociarPrecoAtual"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Preço Atual:" />
+
+        <TextView
             android:id="@+id/tvNegociarPrecoAtual"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -24,7 +36,7 @@
             app:layout_constraintBottom_toTopOf="@id/containerQuantidade"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvNegociarInfoPrecoAtual"
             tools:text="$ 150" />
 
         <com.google.android.material.textfield.TextInputLayout

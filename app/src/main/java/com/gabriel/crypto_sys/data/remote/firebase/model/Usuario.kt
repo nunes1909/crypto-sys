@@ -1,4 +1,4 @@
-package com.gabriel.crypto_sys.data.remote.usuario.model
+package com.gabriel.crypto_sys.data.remote.firebase.model
 
 import java.io.Serializable
 

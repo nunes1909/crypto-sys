@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.gabriel.crypto_sys.data.local.coin.model.Coin
-import com.gabriel.crypto_sys.repository.CoinsRepository
+import com.gabriel.crypto_sys.repository.coin.CoinsRepository
 import kotlinx.coroutines.launch
 
 class CoinsViewModel(private val repository: CoinsRepository) : ViewModel() {

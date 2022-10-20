@@ -1,6 +1,6 @@
 package com.gabriel.crypto_sys.data.remote.retrofit
 
-import com.gabriel.crypto_sys.data.remote.service.CryptoService
+import com.gabriel.crypto_sys.data.remote.coin.service.CryptoService
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
