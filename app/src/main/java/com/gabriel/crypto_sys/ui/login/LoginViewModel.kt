@@ -14,6 +14,10 @@ class LoginViewModel(private val repository: FirebaseRepository) : ViewModel() {
 
     fun estaLogado() = repository.estaLogado()
 
+//    init {
+//        desloga()
+//    }
+
     fun desloga() {
         repository.desloga()
     }

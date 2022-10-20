@@ -21,6 +21,7 @@ import retrofit2.Retrofit
 
 val localModules = module {
     single { get<CryptoSysDataBase>().getCoinDao() }
+    single { get<CryptoSysDataBase>().getCarteiraDao() }
     single {
         Room.databaseBuilder(
             get(),
@@ -37,7 +38,7 @@ val remoteModules = module {
 }
 
 val repositorysModules = module {
-    single<FirebaseRepository> { FirebaseRepository(FirebaseAuth.getInstance()) }
+    single<FirebaseRepository> { FirebaseRepository(FirebaseAuth.getInstance(), get()) }
     single<CoinsRepository> { CoinsRepository(get()) }
     single<DetalhesRepository> { DetalhesRepository(get()) }
 }

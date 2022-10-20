@@ -28,9 +28,6 @@
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim" />
-        <action
-            android:id="@+id/action_carteiraFragment_to_dialogNegociar"
-            app:destination="@id/dialogNegociar" />
     </fragment>
     <fragment
         android:id="@+id/fragmentDetalhes"
@@ -48,13 +45,6 @@
         android:name="com.gabriel.crypto_sys.ui.login.LoginFragment"
         android:label="FragmentLogin" >
         <action
-            android:id="@+id/acaoLoginParaCadastro"
-            app:destination="@id/fragmentCadastro"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"
-            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
-        <action
             android:id="@+id/acaoLoginParaCoins"
             app:destination="@id/coinsFragment"
             app:enterAnim="@anim/nav_default_enter_anim"
@@ -63,11 +53,16 @@
             app:popExitAnim="@anim/nav_default_pop_exit_anim"
             app:popUpTo="@id/fragmentLogin"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/acaoLoginParaCadastro"
+            app:destination="@id/cadastroFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@id/cadastroFragment"
+            app:popUpToInclusive="true" />
     </fragment>
-    <fragment
-        android:id="@+id/fragmentCadastro"
-        android:name="com.gabriel.crypto_sys.ui.cadastro.CadastroFragment"
-        android:label="FragmentCadastro" />
     <action
         android:id="@+id/acaoGlobalParaLogin"
         app:destination="@id/fragmentLogin"
@@ -84,4 +79,8 @@
             android:name="precoAtual"
             app:argType="string" />
     </dialog>
+    <fragment
+        android:id="@+id/cadastroFragment"
+        android:name="com.gabriel.crypto_sys.ui.cadastro.CadastroFragment"
+        android:label="CadastroFragment" />
 </navigation>
