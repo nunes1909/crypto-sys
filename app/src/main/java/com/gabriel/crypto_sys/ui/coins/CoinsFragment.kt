@@ -6,18 +6,12 @@ import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.gabriel.crypto_sys.databinding.FragmentCoinsBinding
 import com.gabriel.crypto_sys.ui.base.BaseFragment
-import com.gabriel.crypto_sys.utils.extensions.toast
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers.IO
-import kotlinx.coroutines.Dispatchers.Main
-import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class FragmentCoins : BaseFragment<FragmentCoinsBinding, CoinsViewModel>() {
+class CoinsFragment : BaseFragment<FragmentCoinsBinding, CoinsViewModel>() {
 
     override val viewModel: CoinsViewModel by viewModel()
     private val coinAdapter by lazy { CoinAdapter() }
@@ -27,6 +21,7 @@ class FragmentCoins : BaseFragment<FragmentCoinsBinding, CoinsViewModel>() {
         configuraRecyler()
         configuraPesquisa()
         loadAll()
+        configuraClickAdapter()
         observer()
     }
 
@@ -65,6 +60,13 @@ class FragmentCoins : BaseFragment<FragmentCoinsBinding, CoinsViewModel>() {
     private fun observer() {
         viewModel.getFav.observe(viewLifecycleOwner) { result ->
             coinAdapter.coinsList = result
+        }
+    }
+
+    private fun configuraClickAdapter() {
+        coinAdapter.setCoinOnClickListener { coin ->
+            val action = CoinsFragmentDirections.acaoCoinsParaDetalhes(coin = coin)
+            controller.navigate(action)
         }
     }
 

@@ -8,7 +8,7 @@ import com.gabriel.crypto_sys.databinding.FragmentCarteiraBinding
 import com.gabriel.crypto_sys.ui.base.BaseFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class FragmentCarteira : BaseFragment<FragmentCarteiraBinding, CarteiraViewModel>() {
+class CarteiraFragment : BaseFragment<FragmentCarteiraBinding, CarteiraViewModel>() {
 
     override val viewModel: CarteiraViewModel by viewModel()
 

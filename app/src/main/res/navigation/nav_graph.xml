@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/coinsFragment"
-        android:name="com.gabriel.crypto_sys.ui.coins.FragmentCoins"
+        android:name="com.gabriel.crypto_sys.ui.coins.CoinsFragment"
         android:label="FragmentCoins">
         <action
             android:id="@+id/acaoCoinsParaDetalhes"
@@ -19,7 +19,7 @@
     </fragment>
     <fragment
         android:id="@+id/carteiraFragment"
-        android:name="com.gabriel.crypto_sys.ui.carteira.FragmentCarteira"
+        android:name="com.gabriel.crypto_sys.ui.carteira.CarteiraFragment"
         android:label="FragmentCarteira" >
         <action
             android:id="@+id/acaoCarteiraParaDetalhes"
@@ -31,11 +31,15 @@
     </fragment>
     <fragment
         android:id="@+id/fragmentDetalhes"
-        android:name="com.gabriel.crypto_sys.ui.detalhes.FragmentDetalhes"
-        android:label="FragmentDetalhes" />
+        android:name="com.gabriel.crypto_sys.ui.detalhes.DetalhesFragment"
+        android:label="FragmentDetalhes" >
+        <argument
+            android:name="coin"
+            app:argType="com.gabriel.crypto_sys.data.local.coin.model.Coin" />
+    </fragment>
     <fragment
         android:id="@+id/fragmentLogin"
-        android:name="com.gabriel.crypto_sys.ui.login.FragmentLogin"
+        android:name="com.gabriel.crypto_sys.ui.login.LoginFragment"
         android:label="FragmentLogin" >
         <action
             android:id="@+id/acaoLoginParaCadastro"
@@ -56,7 +60,7 @@
     </fragment>
     <fragment
         android:id="@+id/fragmentCadastro"
-        android:name="com.gabriel.crypto_sys.ui.cadastro.FragmentCadastro"
+        android:name="com.gabriel.crypto_sys.ui.cadastro.CadastroFragment"
         android:label="FragmentCadastro" />
     <action
         android:id="@+id/acaoGlobalParaLogin"

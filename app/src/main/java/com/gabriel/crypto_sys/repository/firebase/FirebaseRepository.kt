@@ -1,8 +1,8 @@
-package com.gabriel.crypto_sys.repository
+package com.gabriel.crypto_sys.repository.firebase
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.gabriel.crypto_sys.data.remote.usuario.model.Usuario
+import com.gabriel.crypto_sys.data.remote.firebase.model.Usuario
 import com.gabriel.crypto_sys.utils.state.ResourceState
 import com.google.firebase.auth.*
 import java.lang.IllegalArgumentException

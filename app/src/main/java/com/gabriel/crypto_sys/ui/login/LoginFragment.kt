@@ -7,11 +7,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.gabriel.crypto_sys.databinding.FragmentLoginBinding
-import com.gabriel.crypto_sys.data.remote.usuario.model.Usuario
+import com.gabriel.crypto_sys.data.remote.firebase.model.Usuario
 import com.gabriel.crypto_sys.utils.extensions.snackBar
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class FragmentLogin : Fragment() {
+class LoginFragment : Fragment() {
 
     private val viewModel: LoginViewModel by viewModel()
     private val binding by lazy { FragmentLoginBinding.inflate(layoutInflater) }
@@ -54,7 +54,7 @@ class FragmentLogin : Fragment() {
         ).observe(viewLifecycleOwner) { resource ->
             resource?.data?.let { state ->
                 if (state) {
-                    val action = FragmentLoginDirections.acaoLoginParaCoins()
+                    val action = LoginFragmentDirections.acaoLoginParaCoins()
                     controller.navigate(action)
                 } else {
                     view?.snackBar(mensagem = resource.message ?: "Erro durante a autenticação")
@@ -86,7 +86,7 @@ class FragmentLogin : Fragment() {
 
     private fun goCadastro() {
         binding.btnCadastrarLogin.setOnClickListener {
-            val action = FragmentLoginDirections.acaoLoginParaCadastro()
+            val action = LoginFragmentDirections.acaoLoginParaCadastro()
             controller.navigate(action)
         }
     }

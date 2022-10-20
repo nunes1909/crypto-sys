@@ -21,7 +21,7 @@ fun View.hide() {
     visibility = View.GONE
 }
 
-fun String.limitValue(limit: Int, ellipsize: Boolean): String {
+fun String.limitValue(limit: Int, ellipsize: Boolean = false): String {
     val ellEnd = if (ellipsize) "..." else ""
     if (this.length > limit) {
         val first = 0
