@@ -28,6 +28,9 @@
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/action_carteiraFragment_to_dialogNegociar"
+            app:destination="@id/dialogNegociar" />
     </fragment>
     <fragment
         android:id="@+id/fragmentDetalhes"
@@ -36,6 +39,9 @@
         <argument
             android:name="coin"
             app:argType="com.gabriel.crypto_sys.data.local.coin.model.Coin" />
+        <action
+            android:id="@+id/action_fragmentDetalhes_to_dialogNegociar"
+            app:destination="@id/dialogNegociar" />
     </fragment>
     <fragment
         android:id="@+id/fragmentLogin"
@@ -70,4 +76,12 @@
         app:popEnterAnim="@anim/nav_default_pop_enter_anim"
         app:popExitAnim="@anim/nav_default_pop_exit_anim"
         app:popUpTo="@id/coinsFragment" />
+    <dialog
+        android:id="@+id/dialogNegociar"
+        android:name="com.gabriel.crypto_sys.ui.negociar.DialogNegociar"
+        android:label="DialogNegociar" >
+        <argument
+            android:name="precoAtual"
+            app:argType="string" />
+    </dialog>
 </navigation>

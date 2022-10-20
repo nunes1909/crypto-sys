@@ -19,17 +19,27 @@ class DetalhesFragment : BaseFragment<FragmentDetalhesBinding, DetalhesViewModel
 
     override val viewModel: DetalhesViewModel by viewModel()
     private val args: DetalhesFragmentArgs by navArgs()
+    private var precoAtual: String = ""
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         lifecycleScope.launch {
             getDetalhes(args.coin.cod!!)
         }
+        configuraClickNegociar()
         observerDetalhes()
     }
 
     private suspend fun getDetalhes(cod: String) {
         viewModel.getDetalhes(cod = cod)
+    }
+
+    private fun configuraClickNegociar() {
+        binding.btnDetalhesNegociar.setOnClickListener {
+            val action = DetalhesFragmentDirections
+                .actionFragmentDetalhesToDialogNegociar(precoAtual = precoAtual)
+            controller.navigate(action)
+        }
     }
 
     private fun observerDetalhes() {
@@ -49,12 +59,15 @@ class DetalhesFragment : BaseFragment<FragmentDetalhesBinding, DetalhesViewModel
     private fun preencheDetalhes(resource: ResourceState<CoinResponse>) = with(binding) {
         resource.data?.let { coinResponse ->
             tvDetalhesCoinTitle.text = args.coin.cod
+            
             val menorPreco = coinResponse.menorPreco.roundToInt() / 100.00
             tvDetalhesMaiorPreco.text = "R$ $menorPreco"
+
             val maiorPreco = coinResponse.maiorPreco.roundToInt() / 100.00
             tvDetalhesMenorPreco.text = "R$ $maiorPreco"
-            val precoAtual = coinResponse.precoAtual.roundToInt() / 100.00
-            tvDetalhesPrecoAtual.text = "R$ $precoAtual"
+
+            precoAtual = "R$ ${(coinResponse.precoAtual.roundToInt() / 100.00)}"
+            tvDetalhesPrecoAtual.text = precoAtual
         }
     }
 
