@@ -13,4 +13,7 @@ interface CarteiraDao {
 
     @Query("SELECT EXISTS (SELECT ID FROM CARTEIRA WHERE ID = :carteiraId)")
     fun verifyIfCarteiraExists(carteiraId: String): Boolean
+
+    @Query("SELECT * FROM CARTEIRA WHERE ID = :id")
+    fun getCarteira(id: String): Carteira?
 }

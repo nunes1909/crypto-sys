@@ -28,6 +28,13 @@
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/acaoCarteiraParaDialogCarteira"
+            app:destination="@id/carteiraDialog"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
     </fragment>
     <fragment
         android:id="@+id/fragmentDetalhes"
@@ -83,4 +90,15 @@
         android:id="@+id/cadastroFragment"
         android:name="com.gabriel.crypto_sys.ui.cadastro.CadastroFragment"
         android:label="CadastroFragment" />
+    <dialog
+        android:id="@+id/carteiraDialog"
+        android:name="com.gabriel.crypto_sys.ui.carteira.CarteiraDialog"
+        android:label="CarteiraDialog" >
+        <argument
+            android:name="carteira"
+            app:argType="com.gabriel.crypto_sys.data.local.carteira.model.Carteira" />
+        <argument
+            android:name="depositar"
+            app:argType="boolean" />
+    </dialog>
 </navigation>

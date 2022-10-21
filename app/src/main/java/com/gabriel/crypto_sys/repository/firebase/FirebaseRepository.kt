@@ -15,7 +15,7 @@ import java.lang.IllegalArgumentException
 
 class FirebaseRepository(
     private val firebaseAuth: FirebaseAuth,
-    private val carteiraDao: CarteiraDao
+    private val carteiraRepository: CarteiraRepository
 ) {
     fun cadastraUsuario(usuario: Usuario): LiveData<ResourceState<Boolean>> {
         val liveData = MutableLiveData<ResourceState<Boolean>>()
@@ -35,12 +35,6 @@ class FirebaseRepository(
                 ResourceState.Error(data = false, message = "E-mail ou senha inválidos")
         }
         return liveData
-    }
-
-    private fun salvaCarteira(task: Task<AuthResult>) {
-        CoroutineScope(IO).launch {
-            task.result.user?.uid?.let { carteiraDao.salva(Carteira(id = it)) }
-        }
     }
 
     private fun getErrorCadastro(exception: Exception?): String = when (exception) {
@@ -71,10 +65,18 @@ class FirebaseRepository(
         return liveData
     }
 
+    private fun salvaCarteira(task: Task<AuthResult>) {
+        CoroutineScope(IO).launch {
+            task.result.user?.uid?.let {
+                carteiraRepository.salvaCarteira( Carteira(id = it) )
+            }
+        }
+    }
+
     private fun verifyIfExists(task: Task<AuthResult>) {
         CoroutineScope(IO).launch {
             task.result.user?.uid?.let {
-                if (!carteiraDao.verifyIfCarteiraExists(carteiraId = it)) {
+                if (!carteiraRepository.verifyIfExists(carteiraId = it)) {
                     salvaCarteira(task)
                 }
             }
@@ -87,12 +89,8 @@ class FirebaseRepository(
         else -> "Erro desconhecido"
     }
 
-    fun estaLogado(): Boolean {
-        val userAtual = firebaseAuth.currentUser
-        if (userAtual != null) {
-            return true
-        }
-        return false
+    fun getUserAtual(): FirebaseUser? {
+        return firebaseAuth.currentUser
     }
 
     fun desloga() {

@@ -12,19 +12,20 @@
         android:layout_margin="16dp">
 
         <TextView
-            android:id="@+id/tvNegociarInfoPrecoAtual"
-            android:layout_width="wrap_content"
+            android:id="@+id/tvLabelSaldo"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Preço Atual:"
+            android:layout_marginTop="6dp"
+            android:text="Seu saldo:"
             android:textColor="#4CAF50"
             android:textSize="16sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/tvNegociarPrecoAtual"
-            app:layout_constraintStart_toStartOf="@+id/tvNegociarPrecoAtual"
+            app:layout_constraintBottom_toTopOf="@+id/tvSaldo"
+            app:layout_constraintStart_toStartOf="@+id/tvSaldo"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/tvNegociarPrecoAtual"
+            android:id="@+id/tvSaldo"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="#E8E6E6"
@@ -33,53 +34,57 @@
             android:textColor="#4CAF50"
             android:textSize="26sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@id/containerQuantidade"
+            app:layout_constraintBottom_toTopOf="@id/containerValor"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvNegociarInfoPrecoAtual"
+            app:layout_constraintTop_toBottomOf="@+id/tvLabelSaldo"
             tools:text="$ 150" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/containerQuantidade"
+            android:id="@+id/containerValor"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvNegociarPrecoAtual">
+            app:layout_constraintTop_toBottomOf="@+id/tvSaldo">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etQuantidade"
+                android:id="@+id/etValor"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Quantidade"
-                android:inputType="number" />
+                android:hint="Valor"
+                android:inputType="number"
+                android:maxLength="4"
+                android:textColor="@color/black" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
-            android:id="@+id/btnNegociarComprar"
+            android:id="@+id/btnDepositar"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:layout_marginEnd="8dp"
-            android:backgroundTint="#4CAF50"
-            android:text="Comprar"
-            app:layout_constraintEnd_toStartOf="@id/btnNegociarVender"
+            android:backgroundTint="#E8E6E6"
+            android:text="Depositar"
+            android:textColor="@color/black"
+            android:visibility="gone"
+            app:layout_constraintEnd_toStartOf="@id/btnSacar"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/containerQuantidade" />
+            app:layout_constraintTop_toBottomOf="@+id/containerValor" />
 
         <Button
-            android:id="@+id/btnNegociarVender"
+            android:id="@+id/btnSacar"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
-            android:backgroundTint="#F44336"
-            android:text="Vender"
+            android:backgroundTint="#E8E6E6"
+            android:text="Sacar"
+            android:textColor="@color/black"
+            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/btnNegociarComprar"
-            app:layout_constraintTop_toBottomOf="@+id/containerQuantidade" />
+            app:layout_constraintStart_toEndOf="@+id/btnDepositar"
+            app:layout_constraintTop_toBottomOf="@+id/containerValor" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
