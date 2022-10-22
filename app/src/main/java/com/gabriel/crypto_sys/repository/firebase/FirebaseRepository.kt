@@ -2,11 +2,9 @@ package com.gabriel.crypto_sys.repository.firebase
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.gabriel.crypto_sys.data.local.carteira.dao.CarteiraDao
 import com.gabriel.crypto_sys.data.local.carteira.model.Carteira
 import com.gabriel.crypto_sys.data.remote.firebase.model.Usuario
 import com.gabriel.crypto_sys.utils.state.ResourceState
-import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.IO
@@ -23,7 +21,7 @@ class FirebaseRepository(
             firebaseAuth.createUserWithEmailAndPassword(usuario.email, usuario.senha)
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
-                        salvaCarteira(task)
+                        salvaCarteira(task.result.user!!.uid)
                         liveData.value = ResourceState.Success(true)
                     } else {
                         val messageError = getErrorCadastro(exception = task.exception)
@@ -50,7 +48,7 @@ class FirebaseRepository(
             firebaseAuth.signInWithEmailAndPassword(usuario.email, usuario.senha)
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
-                        verifyIfExists(task)
+                        autenticaCarteira(task.result.user!!.uid)
                         liveData.value = ResourceState.Success(data = true)
                     } else {
                         val messageError = getErrorAuth(task.exception)
@@ -65,22 +63,14 @@ class FirebaseRepository(
         return liveData
     }
 
-    private fun salvaCarteira(task: Task<AuthResult>) {
-        CoroutineScope(IO).launch {
-            task.result.user?.uid?.let {
-                carteiraRepository.salvaCarteira( Carteira(id = it) )
-            }
+    private fun autenticaCarteira(userId: String) = CoroutineScope(IO).launch {
+        if (!carteiraRepository.verifyIfExists(userId)) {
+            salvaCarteira(userId)
         }
     }
 
-    private fun verifyIfExists(task: Task<AuthResult>) {
-        CoroutineScope(IO).launch {
-            task.result.user?.uid?.let {
-                if (!carteiraRepository.verifyIfExists(carteiraId = it)) {
-                    salvaCarteira(task)
-                }
-            }
-        }
+    private fun salvaCarteira(userId: String) {
+        carteiraRepository.salvaCarteira(Carteira(id = userId))
     }
 
     private fun getErrorAuth(exception: java.lang.Exception?): String = when (exception) {

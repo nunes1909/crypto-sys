@@ -11,5 +11,5 @@ data class Carteira(
     @ColumnInfo(name = "ID")
     val id: String,
     @ColumnInfo(name = "SALDO")
-    var saldo: Double? = null,
+    var saldo: Int = 0,
 ) : Serializable

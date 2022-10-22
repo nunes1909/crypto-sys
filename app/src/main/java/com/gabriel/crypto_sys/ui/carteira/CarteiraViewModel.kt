@@ -6,6 +6,9 @@ import androidx.lifecycle.ViewModel
 import com.gabriel.crypto_sys.data.local.carteira.model.Carteira
 import com.gabriel.crypto_sys.repository.firebase.CarteiraRepository
 import com.gabriel.crypto_sys.repository.firebase.FirebaseRepository
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.launch
 
 class CarteiraViewModel(
     private val firebaseRepository: FirebaseRepository,
@@ -19,5 +22,9 @@ class CarteiraViewModel(
         firebaseRepository.getUserAtual()?.uid?.let {
             _carteira.value = carteiraRepository.getCarteiraAtual(it)
         }
+    }
+
+    fun salvaCarteira(carteira: Carteira) = CoroutineScope(IO).launch {
+        carteiraRepository.salvaCarteira(carteira = carteira)
     }
 }

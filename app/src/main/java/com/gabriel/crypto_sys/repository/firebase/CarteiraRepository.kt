@@ -11,22 +11,11 @@ import kotlinx.coroutines.withContext
 class CarteiraRepository(private val dao: CarteiraDao) {
 
     fun salvaCarteira(carteira: Carteira?) {
-        CoroutineScope(Dispatchers.IO).launch {
-            carteira?.let { dao.salva(it) }
-        }
+        carteira?.let { dao.salva(it) }
     }
 
-    fun verifyIfExists(carteiraId: String?): Boolean {
-        var exists = true
-        CoroutineScope(Dispatchers.IO).launch {
-            carteiraId?.let {
-                if (!dao.verifyIfCarteiraExists(carteiraId = it)) {
-                    salvaCarteira(Carteira(id = carteiraId))
-                    exists = false
-                }
-            }
-        }
-        return exists
+    fun verifyIfExists(carteiraId: String): Boolean {
+        return dao.verifyIfCarteiraExists(carteiraId = carteiraId)
     }
 
     suspend fun getCarteiraAtual(usuarioId: String): Carteira? = withContext(IO) {

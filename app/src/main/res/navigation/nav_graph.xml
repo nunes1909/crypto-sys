@@ -95,10 +95,10 @@
         android:name="com.gabriel.crypto_sys.ui.carteira.CarteiraDialog"
         android:label="CarteiraDialog" >
         <argument
-            android:name="carteira"
-            app:argType="com.gabriel.crypto_sys.data.local.carteira.model.Carteira" />
-        <argument
             android:name="depositar"
             app:argType="boolean" />
+        <argument
+            android:name="carteira"
+            app:argType="com.gabriel.crypto_sys.data.local.carteira.model.Carteira" />
     </dialog>
 </navigation>
