@@ -12,7 +12,12 @@ class LoginViewModel(private val repository: FirebaseRepository) : ViewModel() {
         return repository.autenticaUsuario(usuario = usuario)
     }
 
-    fun estaLogado() = repository.estaLogado()
+    fun estaLogado(): Boolean {
+        if (repository.getUserAtual() != null) {
+            return true
+        }
+        return false
+    }
 
     fun desloga() {
         repository.desloga()

@@ -6,8 +6,10 @@ import com.gabriel.crypto_sys.data.remote.retrofit.CryptoRetrofit
 import com.gabriel.crypto_sys.data.remote.coin.service.CryptoService
 import com.gabriel.crypto_sys.repository.coin.CoinsRepository
 import com.gabriel.crypto_sys.repository.datalhes.DetalhesRepository
+import com.gabriel.crypto_sys.repository.firebase.CarteiraRepository
 import com.gabriel.crypto_sys.repository.firebase.FirebaseRepository
 import com.gabriel.crypto_sys.ui.cadastro.CadastroViewModel
+import com.gabriel.crypto_sys.ui.carteira.CarteiraViewModel
 import com.gabriel.crypto_sys.ui.coins.CoinsViewModel
 import com.gabriel.crypto_sys.ui.detalhes.DetalhesViewModel
 import com.gabriel.crypto_sys.ui.login.LoginViewModel
@@ -21,6 +23,7 @@ import retrofit2.Retrofit
 
 val localModules = module {
     single { get<CryptoSysDataBase>().getCoinDao() }
+    single { get<CryptoSysDataBase>().getCarteiraDao() }
     single {
         Room.databaseBuilder(
             get(),
@@ -37,7 +40,8 @@ val remoteModules = module {
 }
 
 val repositorysModules = module {
-    single<FirebaseRepository> { FirebaseRepository(FirebaseAuth.getInstance()) }
+    single<FirebaseRepository> { FirebaseRepository(FirebaseAuth.getInstance(), get()) }
+    single<CarteiraRepository> { CarteiraRepository(get()) }
     single<CoinsRepository> { CoinsRepository(get()) }
     single<DetalhesRepository> { DetalhesRepository(get()) }
 }
@@ -47,6 +51,7 @@ val viewModelModules = module {
     viewModel<CadastroViewModel> { CadastroViewModel(get()) }
     viewModel<CoinsViewModel> { CoinsViewModel(get()) }
     viewModel<DetalhesViewModel> { DetalhesViewModel(get()) }
+    viewModel<CarteiraViewModel> { CarteiraViewModel(get(), get()) }
 }
 
 val firebaseModule = module {

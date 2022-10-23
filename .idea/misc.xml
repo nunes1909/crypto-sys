@@ -4,12 +4,15 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/gabri/AndroidStudioProjects/crypto-sys/app/src/main/res/layout/activity_main.xml" value="0.2613521695257316" />
+        <entry key="..\:/Users/gabri/AndroidStudioProjects/crypto-sys/app/src/main/res/layout/dialog_carteira.xml" value="0.559375" />
         <entry key="..\:/Users/gabri/AndroidStudioProjects/crypto-sys/app/src/main/res/layout/dialog_negociar.xml" value="0.559375" />
         <entry key="..\:/Users/gabri/AndroidStudioProjects/crypto-sys/app/src/main/res/layout/fragment_cadastro_usuario.xml" value="0.559375" />
+        <entry key="..\:/Users/gabri/AndroidStudioProjects/crypto-sys/app/src/main/res/layout/fragment_carteira.xml" value="0.5507692307692308" />
         <entry key="..\:/Users/gabri/AndroidStudioProjects/crypto-sys/app/src/main/res/layout/fragment_coins.xml" value="0.559375" />
         <entry key="..\:/Users/gabri/AndroidStudioProjects/crypto-sys/app/src/main/res/layout/fragment_detalhes.xml" value="0.5203703703703704" />
         <entry key="..\:/Users/gabri/AndroidStudioProjects/crypto-sys/app/src/main/res/layout/item_coin.xml" value="0.559375" />
         <entry key="..\:/Users/gabri/AndroidStudioProjects/crypto-sys/app/src/main/res/menu/menu_nav.xml" value="0.559375" />
+        <entry key="..\:/Users/gabri/AndroidStudioProjects/crypto-sys/app/src/main/res/menu/menu_toolbar.xml" value="0.8818359375" />
         <entry key="..\:/Users/gabri/AndroidStudioProjects/cryptosys/app/src/main/res/layout/dialog_negociar.xml" value="0.559375" />
         <entry key="..\:/Users/gabri/AndroidStudioProjects/cryptosys/app/src/main/res/layout/fragment_cadastro_usuario.xml" value="0.5" />
         <entry key="..\:/Users/gabri/AndroidStudioProjects/cryptosys/app/src/main/res/layout/fragment_carteira.xml" value="0.559375" />
