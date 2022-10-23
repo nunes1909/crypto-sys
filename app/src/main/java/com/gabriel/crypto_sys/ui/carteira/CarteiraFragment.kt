@@ -4,63 +4,54 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.lifecycleScope
 import com.gabriel.crypto_sys.data.local.carteira.model.Carteira
 import com.gabriel.crypto_sys.databinding.FragmentCarteiraBinding
-import com.gabriel.crypto_sys.ui.base.fragment.BaseFragment
-import kotlinx.coroutines.launch
+import com.gabriel.crypto_sys.ui.base.BaseFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class CarteiraFragment : BaseFragment<FragmentCarteiraBinding, CarteiraViewModel>() {
 
     override val viewModel: CarteiraViewModel by viewModel()
+    private lateinit var carteiraGlobal: Carteira
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        buscaCarteiraAtual()
         observerCarteira()
-    }
-
-    private fun buscaCarteiraAtual() {
-        lifecycleScope.launch { viewModel.getCarteiraAtual(getUserAtual()!!.uid) }
     }
 
     private fun observerCarteira() {
         viewModel.carteira.observe(viewLifecycleOwner) { carteira ->
             if (carteira != null) {
-                configuraComponentes(carteira)
+                carteiraGlobal = carteira
+                defineSaldo()
+                goDepositar()
+                goSacar()
+                goHistorico()
             }
         }
     }
 
-    private fun configuraComponentes(carteira: Carteira) {
-        defineSaldo(carteira)
-        goDepositar(carteira)
-        goSacar(carteira)
-        goHistorico(carteira)
-    }
-
-    private fun goDepositar(carteira: Carteira) {
+    private fun goDepositar() {
         binding.btnCarteiraDepositar.setOnClickListener {
-            goDialogCarteira(depositar = true, carteira = carteira)
+            goDialogCarteira(depositar = true, carteira = carteiraGlobal)
         }
     }
 
-    private fun goSacar(carteira: Carteira) {
+    private fun goSacar() {
         binding.btnCarteiraSacar.setOnClickListener {
-            goDialogCarteira(depositar = false, carteira = carteira)
+            goDialogCarteira(depositar = false, carteira = carteiraGlobal)
         }
     }
 
-    private fun goHistorico(carteira: Carteira) {
+    private fun goHistorico() {
         binding.btnCarteiraHistorico.setOnClickListener {
-            val action = CarteiraFragmentDirections.acaoCarteiraParaHistorico(carteira.id)
+            val action = CarteiraFragmentDirections.acaoCarteiraParaHistorico(carteiraGlobal.id)
             controller.navigate(action)
         }
     }
 
-    private fun defineSaldo(carteira: Carteira) {
-        binding.tvCarteiraSaldo.text = "R$ ${carteira.saldo}"
+    private fun defineSaldo() {
+        binding.tvCarteiraSaldo.text = "R$ ${carteiraGlobal.saldo}"
     }
 
     private fun goDialogCarteira(depositar: Boolean, carteira: Carteira) {

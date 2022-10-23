@@ -55,7 +55,7 @@ val viewModelModules = module {
     viewModel<CadastroViewModel> { CadastroViewModel(get()) }
     viewModel<CoinsViewModel> { CoinsViewModel(get()) }
     viewModel<DetalhesViewModel> { DetalhesViewModel(get()) }
-    viewModel<CarteiraViewModel> { CarteiraViewModel(get()) }
+    viewModel<CarteiraViewModel> { CarteiraViewModel(get(), get()) }
     viewModel<TransacaoViewModel> { TransacaoViewModel(get(), get(), get()) }
 }
 

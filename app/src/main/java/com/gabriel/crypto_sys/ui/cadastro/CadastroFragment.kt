@@ -17,8 +17,8 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class CadastroFragment : Fragment() {
 
-    private val viewModel: CadastroViewModel by viewModel()
     private val binding by lazy { FragmentCadastroUsuarioBinding.inflate(layoutInflater) }
+    private val viewModel: CadastroViewModel by viewModel()
     private val controller by lazy { findNavController() }
 
     override fun onCreateView(
@@ -34,8 +34,8 @@ class CadastroFragment : Fragment() {
 
     private fun configuraCadastroUsuario() {
         binding.btnCadastrar.setOnClickListener {
-            limpaErrorCampos()
             getValuesCadastro()
+            limpaErrorCampos()
         }
     }
 

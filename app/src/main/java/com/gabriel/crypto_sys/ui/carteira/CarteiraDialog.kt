@@ -68,11 +68,8 @@ class CarteiraDialog : DialogFragment() {
                     viewModel.salvaCarteira(resource.data!!)
                     dismiss()
                 }
-                else -> {
-                    etValor.error = resource.message
-                }
+                else -> { etValor.error = resource.message }
             }
-
         }
     }
 
@@ -90,9 +87,7 @@ class CarteiraDialog : DialogFragment() {
                     viewModel.salvaCarteira(resource.data!!)
                     dismiss()
                 }
-                else -> {
-                    etValor.error = resource.message
-                }
+                else -> { etValor.error = resource.message }
             }
         }
     }

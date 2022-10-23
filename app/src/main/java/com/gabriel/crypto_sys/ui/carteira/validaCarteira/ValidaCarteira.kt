@@ -4,5 +4,5 @@ import com.gabriel.crypto_sys.data.local.carteira.model.Carteira
 import com.gabriel.crypto_sys.utils.state.ResourceState
 
 interface ValidaCarteira {
-    fun regraCalculoCarteira(valor: Int?, carteira: Carteira): ResourceState<Carteira>
+    fun regraCalculoCarteira(valor: Int, carteira: Carteira): ResourceState<Carteira>
 }

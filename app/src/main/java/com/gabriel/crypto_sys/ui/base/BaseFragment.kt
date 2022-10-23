@@ -1,4 +1,4 @@
-package com.gabriel.crypto_sys.ui.base.fragment
+package com.gabriel.crypto_sys.ui.base
 
 import android.os.Bundle
 import android.view.*
@@ -18,6 +18,7 @@ abstract class BaseFragment<viewBinding : ViewBinding, viewModel : ViewModel> : 
 
     private var _binding: viewBinding? = null
     protected val binding get() = _binding!!
+
     protected abstract val viewModel: viewModel
 
     private val loginViewModel: LoginViewModel by viewModel()
@@ -28,6 +29,12 @@ abstract class BaseFragment<viewBinding : ViewBinding, viewModel : ViewModel> : 
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
         verificaEstaLogado()
+    }
+
+    private fun verificaEstaLogado() {
+        if (!loginViewModel.estaLogado()) {
+            vaiParaLogin()
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -41,12 +48,6 @@ abstract class BaseFragment<viewBinding : ViewBinding, viewModel : ViewModel> : 
             vaiParaLogin()
         }
         return super.onOptionsItemSelected(item)
-    }
-
-    private fun verificaEstaLogado() {
-        if (!loginViewModel.estaLogado()) {
-            vaiParaLogin()
-        }
     }
 
     private fun vaiParaLogin() {
@@ -67,7 +68,10 @@ abstract class BaseFragment<viewBinding : ViewBinding, viewModel : ViewModel> : 
         return binding.root
     }
 
-    abstract fun getViewBinding(inflater: LayoutInflater, container: ViewGroup?): viewBinding?
+    abstract fun getViewBinding(
+        inflater: LayoutInflater,
+        container: ViewGroup?
+    ): viewBinding?
 
     override fun onDestroyView() {
         super.onDestroyView()

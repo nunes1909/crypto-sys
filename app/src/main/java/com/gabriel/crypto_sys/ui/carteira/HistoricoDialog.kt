@@ -25,15 +25,14 @@ class HistoricoDialog : DialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val builder = AlertDialog.Builder(context)
         builder.setView(createView())
-
+        lifecycleScope.launch {
+            transViewModel.getTransacaoAtual(carteiraId = args.carteiraId)
+        }
         return builder.create()
     }
 
     private fun createView(): View {
         binding = DialogHistoricoBinding.inflate(layoutInflater)
-        lifecycleScope.launch {
-            transViewModel.getTransacaoAtual(carteiraId = args.carteiraId)
-        }
         configuraRecycler()
         observerTransacoes()
         return binding.root

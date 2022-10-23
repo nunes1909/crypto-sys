@@ -15,7 +15,7 @@ interface CoinDao {
     @Query("DELETE FROM COIN")
     fun deletaCoin()
 
-    @Query("SELECT * FROM COIN ORDER BY CODIGO")
+    @Query("SELECT * FROM COIN")
     fun getAll(): Flow<List<Coin>>
 
     @Query("SELECT * FROM COIN WHERE CODIGO LIKE :query")

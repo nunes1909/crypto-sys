@@ -6,18 +6,26 @@ import androidx.lifecycle.ViewModel
 import com.gabriel.crypto_sys.data.local.carteira.model.Carteira
 import com.gabriel.crypto_sys.repository.carteira.CarteiraRepository
 import com.gabriel.crypto_sys.repository.firebase.FirebaseRepository
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
 
-class CarteiraViewModel(private val carteiraRepository: CarteiraRepository) : ViewModel() {
+class CarteiraViewModel(
+    private val carteiraRepository: CarteiraRepository,
+    firebaseAuth: FirebaseAuth
+) : ViewModel() {
+
+    init {
+        getCarteiraAtual(firebaseAuth.uid!!)
+    }
 
     private val _carteira = MutableLiveData<Carteira?>()
     val carteira = _carteira as LiveData<Carteira?>
 
-    suspend fun getCarteiraAtual(userId: String) {
+    fun getCarteiraAtual(userId: String) = CoroutineScope(IO).launch {
         carteiraRepository.getCarteiraAtual(userId).collect { carteira ->
-            _carteira.value = carteira
+            _carteira.postValue(carteira)
         }
     }
 
