@@ -11,7 +11,6 @@ import com.gabriel.crypto_sys.databinding.DialogCarteiraBinding
 import com.gabriel.crypto_sys.ui.carteira.validaCarteira.ValidaDeposito
 import com.gabriel.crypto_sys.ui.carteira.validaCarteira.ValidaSaque
 import com.gabriel.crypto_sys.utils.extensions.show
-import com.gabriel.crypto_sys.utils.extensions.toast
 import com.gabriel.crypto_sys.utils.state.ResourceState
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -59,7 +58,7 @@ class CarteiraDialog : DialogFragment() {
         btnDepositar.setOnClickListener {
             val deposito = etValor.text.toString().takeIf { it.trim().isNotEmpty() } ?: "0"
 
-            val resource = ValidaDeposito().regraCalculo(
+            val resource = ValidaDeposito().regraCalculoCarteira(
                 valor = deposito.toInt(),
                 carteira = carteira
             )
@@ -81,7 +80,7 @@ class CarteiraDialog : DialogFragment() {
         btnSacar.setOnClickListener {
             val saque = etValor.text.toString().takeIf { it.trim().isNotEmpty() } ?: "0"
 
-            val resource = ValidaSaque().regraCalculo(
+            val resource = ValidaSaque().regraCalculoCarteira(
                 valor = saque.toInt(),
                 carteira = carteira
             )
@@ -95,8 +94,6 @@ class CarteiraDialog : DialogFragment() {
                     etValor.error = resource.message
                 }
             }
-
         }
     }
-
 }

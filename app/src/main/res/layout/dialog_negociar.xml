@@ -33,10 +33,68 @@
             android:textColor="#4CAF50"
             android:textSize="26sp"
             android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/tvNegociarInfoSaldoAtual"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvNegociarInfoSaldoAtual"
+            tools:text="$ 150" />
+
+        <TextView
+            android:id="@+id/tvNegociarInfoSaldoAtual"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="Saldo Atual:"
+            android:textColor="#4CAF50"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/tvNegociarSaldoAtual"
+            app:layout_constraintStart_toStartOf="@+id/tvNegociarPrecoAtual"
+            app:layout_constraintTop_toBottomOf="@+id/tvNegociarPrecoAtual" />
+
+        <TextView
+            android:id="@+id/tvNegociarSaldoAtual"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="#E8E6E6"
+            android:padding="6dp"
+            android:textAlignment="center"
+            android:textColor="#4CAF50"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/tvNegociarInfoTotalInvestido"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvNegociarInfoSaldoAtual"
+            tools:text="$ 150" />
+
+        <TextView
+            android:id="@+id/tvNegociarInfoTotalInvestido"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="Total Investido:"
+            android:textColor="#4CAF50"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/tvNegociarTotalInvestido"
+            app:layout_constraintStart_toStartOf="@+id/tvNegociarSaldoAtual"
+            app:layout_constraintTop_toBottomOf="@+id/tvNegociarSaldoAtual" />
+
+        <TextView
+            android:id="@+id/tvNegociarTotalInvestido"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="#E8E6E6"
+            android:padding="6dp"
+            android:textAlignment="center"
+            android:textColor="#4CAF50"
+            android:textSize="26sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@id/containerQuantidade"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvNegociarInfoPrecoAtual"
+            app:layout_constraintTop_toBottomOf="@+id/tvNegociarInfoTotalInvestido"
             tools:text="$ 150" />
 
         <com.google.android.material.textfield.TextInputLayout
@@ -47,7 +105,7 @@
             android:layout_marginTop="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvNegociarPrecoAtual">
+            app:layout_constraintTop_toBottomOf="@+id/tvNegociarTotalInvestido">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etQuantidade"

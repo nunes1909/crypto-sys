@@ -4,7 +4,7 @@ import com.gabriel.crypto_sys.data.local.carteira.model.Carteira
 import com.gabriel.crypto_sys.utils.state.ResourceState
 
 class ValidaSaque : ValidaCarteira {
-    override fun regraCalculo(valor: Int?, carteira: Carteira): ResourceState<Carteira> {
+    override fun regraCalculoCarteira(valor: Int?, carteira: Carteira): ResourceState<Carteira> {
         if (valor.toString().isEmpty()) {
             return ResourceState.Error(message = "O valor digitado é inválido.")
         }

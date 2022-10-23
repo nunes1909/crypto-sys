@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.gabriel.crypto_sys.data.local.carteira.model.Carteira
 import com.gabriel.crypto_sys.data.remote.firebase.model.Usuario
+import com.gabriel.crypto_sys.repository.carteira.CarteiraRepository
 import com.gabriel.crypto_sys.utils.state.ResourceState
 import com.google.firebase.auth.*
 import kotlinx.coroutines.CoroutineScope

@@ -5,6 +5,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.gabriel.crypto_sys.data.local.carteira.model.Carteira
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface CarteiraDao {
@@ -15,5 +16,5 @@ interface CarteiraDao {
     fun verifyIfCarteiraExists(carteiraId: String): Boolean
 
     @Query("SELECT * FROM CARTEIRA WHERE ID = :id")
-    fun getCarteira(id: String): Carteira?
+    fun getCarteira(id: String): Flow<Carteira?>
 }

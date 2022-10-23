@@ -6,13 +6,15 @@ import com.gabriel.crypto_sys.data.remote.retrofit.CryptoRetrofit
 import com.gabriel.crypto_sys.data.remote.coin.service.CryptoService
 import com.gabriel.crypto_sys.repository.coin.CoinsRepository
 import com.gabriel.crypto_sys.repository.datalhes.DetalhesRepository
-import com.gabriel.crypto_sys.repository.firebase.CarteiraRepository
+import com.gabriel.crypto_sys.repository.carteira.CarteiraRepository
 import com.gabriel.crypto_sys.repository.firebase.FirebaseRepository
+import com.gabriel.crypto_sys.repository.transacao.TransacaoRepository
 import com.gabriel.crypto_sys.ui.cadastro.CadastroViewModel
 import com.gabriel.crypto_sys.ui.carteira.CarteiraViewModel
 import com.gabriel.crypto_sys.ui.coins.CoinsViewModel
 import com.gabriel.crypto_sys.ui.detalhes.DetalhesViewModel
 import com.gabriel.crypto_sys.ui.login.LoginViewModel
+import com.gabriel.crypto_sys.ui.transacao.TransacaoViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -24,6 +26,7 @@ import retrofit2.Retrofit
 val localModules = module {
     single { get<CryptoSysDataBase>().getCoinDao() }
     single { get<CryptoSysDataBase>().getCarteiraDao() }
+    single { get<CryptoSysDataBase>().getTransacaoDao() }
     single {
         Room.databaseBuilder(
             get(),
@@ -44,6 +47,7 @@ val repositorysModules = module {
     single<CarteiraRepository> { CarteiraRepository(get()) }
     single<CoinsRepository> { CoinsRepository(get()) }
     single<DetalhesRepository> { DetalhesRepository(get()) }
+    single<TransacaoRepository> { TransacaoRepository(get()) }
 }
 
 val viewModelModules = module {
@@ -51,7 +55,8 @@ val viewModelModules = module {
     viewModel<CadastroViewModel> { CadastroViewModel(get()) }
     viewModel<CoinsViewModel> { CoinsViewModel(get()) }
     viewModel<DetalhesViewModel> { DetalhesViewModel(get()) }
-    viewModel<CarteiraViewModel> { CarteiraViewModel(get(), get()) }
+    viewModel<CarteiraViewModel> { CarteiraViewModel(get()) }
+    viewModel<TransacaoViewModel> { TransacaoViewModel(get(), get(), get()) }
 }
 
 val firebaseModule = module {
