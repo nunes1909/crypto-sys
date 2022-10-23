@@ -8,6 +8,7 @@ import com.gabriel.crypto_sys.repository.firebase.CarteiraRepository
 import com.gabriel.crypto_sys.repository.firebase.FirebaseRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 class CarteiraViewModel(
@@ -19,8 +20,10 @@ class CarteiraViewModel(
     val carteira = _carteira as LiveData<Carteira?>
 
     suspend fun getCarteiraAtual() {
-        firebaseRepository.getUserAtual()?.uid?.let {
-            _carteira.value = carteiraRepository.getCarteiraAtual(it)
+        firebaseRepository.getUserAtual()?.uid?.let { userId ->
+            carteiraRepository.getCarteiraAtual(userId).collect { carteira ->
+                _carteira.value = carteira
+            }
         }
     }
 
