@@ -80,11 +80,17 @@
         app:popUpTo="@id/coinsFragment" />
     <dialog
         android:id="@+id/dialogNegociar"
-        android:name="com.gabriel.crypto_sys.ui.negociar.DialogNegociar"
+        android:name="com.gabriel.crypto_sys.ui.negociar.DialogTransacao"
         android:label="DialogNegociar" >
         <argument
-            android:name="precoAtual"
+            android:name="codigo"
             app:argType="string" />
+        <argument
+            android:name="carteiraId"
+            app:argType="string" />
+        <argument
+            android:name="precoAtual"
+            app:argType="integer" />
     </dialog>
     <fragment
         android:id="@+id/cadastroFragment"

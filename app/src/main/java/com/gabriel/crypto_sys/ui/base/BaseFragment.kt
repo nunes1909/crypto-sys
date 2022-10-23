@@ -9,6 +9,9 @@ import androidx.viewbinding.ViewBinding
 import com.gabriel.crypto_sys.NavGraphDirections
 import com.gabriel.crypto_sys.R
 import com.gabriel.crypto_sys.ui.login.LoginViewModel
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 abstract class BaseFragment<viewBinding : ViewBinding, viewModel : ViewModel> : Fragment() {
@@ -19,6 +22,7 @@ abstract class BaseFragment<viewBinding : ViewBinding, viewModel : ViewModel> : 
 
     private val loginViewModel: LoginViewModel by viewModel()
     protected val controller by lazy { findNavController() }
+    private val firebaseAuth: FirebaseAuth by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,6 +52,10 @@ abstract class BaseFragment<viewBinding : ViewBinding, viewModel : ViewModel> : 
     private fun vaiParaLogin() {
         val action = NavGraphDirections.acaoGlobalParaLogin()
         controller.navigate(action)
+    }
+
+    fun getUserAtual(): FirebaseUser? {
+        return firebaseAuth.currentUser
     }
 
     override fun onCreateView(

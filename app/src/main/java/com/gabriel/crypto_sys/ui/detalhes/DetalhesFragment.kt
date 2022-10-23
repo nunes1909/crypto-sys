@@ -6,9 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
+import com.gabriel.crypto_sys.data.local.carteira.model.Carteira
+import com.gabriel.crypto_sys.data.local.transacao.model.Transacao
 import com.gabriel.crypto_sys.data.remote.coin.model.CoinResponse
 import com.gabriel.crypto_sys.databinding.FragmentDetalhesBinding
 import com.gabriel.crypto_sys.ui.base.BaseFragment
+import com.gabriel.crypto_sys.ui.carteira.CarteiraViewModel
+import com.gabriel.crypto_sys.ui.negociar.TransacaoViewModel
 import com.gabriel.crypto_sys.utils.extensions.toast
 import com.gabriel.crypto_sys.utils.state.ResourceState
 import kotlinx.coroutines.launch
@@ -18,28 +22,24 @@ import kotlin.math.roundToInt
 class DetalhesFragment : BaseFragment<FragmentDetalhesBinding, DetalhesViewModel>() {
 
     override val viewModel: DetalhesViewModel by viewModel()
+
     private val args: DetalhesFragmentArgs by navArgs()
-    private var precoAtual: String = ""
+    private var precoAtual: Double = 0.0
+
+    private lateinit var carteiraGlobal: Carteira
+    private lateinit var transacaoGlobal: Transacao
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         lifecycleScope.launch {
             getDetalhes(args.coin.cod!!)
         }
-        configuraClickNegociar()
         observerDetalhes()
+        configuraClickNegociar()
     }
 
     private suspend fun getDetalhes(cod: String) {
         viewModel.getDetalhes(cod = cod)
-    }
-
-    private fun configuraClickNegociar() {
-        binding.btnDetalhesNegociar.setOnClickListener {
-            val action = DetalhesFragmentDirections
-                .actionFragmentDetalhesToDialogNegociar(precoAtual = precoAtual)
-            controller.navigate(action)
-        }
     }
 
     private fun observerDetalhes() {
@@ -56,6 +56,18 @@ class DetalhesFragment : BaseFragment<FragmentDetalhesBinding, DetalhesViewModel
         }
     }
 
+    private fun configuraClickNegociar() {
+        binding.btnDetalhesNegociar.setOnClickListener {
+            val action = DetalhesFragmentDirections
+                .actionFragmentDetalhesToDialogNegociar(
+                    precoAtual = precoAtual.toInt(),
+                    codigo = args.coin.cod!!,
+                    carteiraId = getUserAtual()?.uid!!
+                )
+            controller.navigate(action)
+        }
+    }
+
     private fun preencheDetalhes(resource: ResourceState<CoinResponse>) = with(binding) {
         resource.data?.let { coinResponse ->
             tvDetalhesCoinTitle.text = args.coin.cod
@@ -66,8 +78,8 @@ class DetalhesFragment : BaseFragment<FragmentDetalhesBinding, DetalhesViewModel
             val maiorPreco = coinResponse.maiorPreco.roundToInt() / 100.00
             tvDetalhesMenorPreco.text = "R$ $maiorPreco"
 
-            precoAtual = "R$ ${(coinResponse.precoAtual.roundToInt() / 100.00)}"
-            tvDetalhesPrecoAtual.text = precoAtual
+            precoAtual = coinResponse.precoAtual.roundToInt() / 100.00
+            tvDetalhesPrecoAtual.text = "R$ $precoAtual"
         }
     }
 

@@ -4,11 +4,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.gabriel.crypto_sys.data.local.carteira.model.Carteira
-import com.gabriel.crypto_sys.repository.firebase.CarteiraRepository
+import com.gabriel.crypto_sys.repository.carteira.CarteiraRepository
 import com.gabriel.crypto_sys.repository.firebase.FirebaseRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.IO
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 class CarteiraViewModel(
