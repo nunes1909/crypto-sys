@@ -13,7 +13,7 @@ class ValidaCompra : ValidaTransacao {
         if (precoAtual <= 0) {
             return ResourceState.Error(message = "O preço atual é zero.")
         }
-        if (saldo <= 0) {
+        if (saldo <= 0 || quantidade * precoAtual > saldo) {
             return ResourceState.Error(message = "Saldo insuficiente.")
         }
         if (quantidade <= 0) {
@@ -24,7 +24,7 @@ class ValidaCompra : ValidaTransacao {
                 id = 0L,
                 cod = codigo,
                 quantidade = quantidade,
-                valor = precoAtual
+                valor = quantidade * precoAtual
             )
         )
     }

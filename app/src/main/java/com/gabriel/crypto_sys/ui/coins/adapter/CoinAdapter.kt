@@ -1,4 +1,4 @@
-package com.gabriel.crypto_sys.ui.coins
+package com.gabriel.crypto_sys.ui.coins.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

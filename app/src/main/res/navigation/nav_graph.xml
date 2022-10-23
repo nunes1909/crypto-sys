@@ -35,6 +35,15 @@
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/acaoCarteiraParaHistorico"
+            app:destination="@id/historicoDialog"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@id/historicoDialog"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/fragmentDetalhes"
@@ -106,5 +115,13 @@
         <argument
             android:name="carteira"
             app:argType="com.gabriel.crypto_sys.data.local.carteira.model.Carteira" />
+    </dialog>
+    <dialog
+        android:id="@+id/historicoDialog"
+        android:name="com.gabriel.crypto_sys.ui.carteira.HistoricoDialog"
+        android:label="HistoricoDialog" >
+        <argument
+            android:name="carteiraId"
+            app:argType="string" />
     </dialog>
 </navigation>

@@ -10,6 +10,10 @@ class TransacaoRepository(private val transacaoDao: TransacaoDao) {
     }
 
     fun getTransacoes(cod: String, carteiraId: String): Flow<List<Transacao>> {
-        return transacaoDao.getTransacoes(cod, carteiraId)
+        return if (cod.isEmpty()) {
+            transacaoDao.getAll(carteiraId)
+        } else {
+            transacaoDao.getTransacoes(cod, carteiraId)
+        }
     }
 }
