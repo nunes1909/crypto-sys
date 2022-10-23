@@ -37,6 +37,7 @@ class CarteiraFragment : BaseFragment<FragmentCarteiraBinding, CarteiraViewModel
         defineSaldo(carteira)
         goDepositar(carteira)
         goSacar(carteira)
+        goHistorico(carteira)
     }
 
     private fun goDepositar(carteira: Carteira) {
@@ -48,6 +49,13 @@ class CarteiraFragment : BaseFragment<FragmentCarteiraBinding, CarteiraViewModel
     private fun goSacar(carteira: Carteira) {
         binding.btnCarteiraSacar.setOnClickListener {
             goDialogCarteira(depositar = false, carteira = carteira)
+        }
+    }
+
+    private fun goHistorico(carteira: Carteira) {
+        binding.btnCarteiraHistorico.setOnClickListener {
+            val action = CarteiraFragmentDirections.acaoCarteiraParaHistorico(carteira.id)
+            controller.navigate(action)
         }
     }
 

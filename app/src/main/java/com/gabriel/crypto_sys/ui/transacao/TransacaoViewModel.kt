@@ -18,10 +18,10 @@ class TransacaoViewModel(
     private val firebaseAuth: FirebaseAuth
 ) : ViewModel() {
 
-    private val _transacao = MutableLiveData<List<Transacao>?>()
-    val transacao = _transacao as LiveData<List<Transacao>?>
+    private val _transacao = MutableLiveData<List<Transacao>>()
+    val transacao = _transacao as LiveData<List<Transacao>>
 
-    suspend fun getTransacaoAtual(cod: String, carteiraId: String) {
+    suspend fun getTransacaoAtual(cod: String = "", carteiraId: String) {
         transacaoRepository.getTransacoes(cod, carteiraId).collect { transacoes ->
             _transacao.value = transacoes
         }

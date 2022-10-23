@@ -12,5 +12,8 @@ interface TransacaoDao {
     fun salva(transacao: Transacao)
 
     @Query("SELECT * FROM Transacao WHERE CODIGO = :cod AND ID_CARTEIRA = :carteiraId")
-    fun getTransacoes(cod: String, carteiraId: String): Flow<List<Transacao>>
+    fun getTransacoes(cod: String?, carteiraId: String): Flow<List<Transacao>>
+
+    @Query("SELECT * FROM Transacao WHERE ID_CARTEIRA = :carteiraId")
+    fun getAll(carteiraId: String): Flow<List<Transacao>>
 }

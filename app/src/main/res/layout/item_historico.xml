@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="6dp"
+    android:layout_marginTop="6dp"
+    android:layout_marginEnd="6dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tvItemHistoricoCod"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="12dp"
+            android:textSize="50sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="BTC" />
+
+        <TextView
+            android:id="@+id/tvLabelQuantidade"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Quantidade:"
+            android:textSize="14sp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/tvItemHistoricoQuantidade"
+            app:layout_constraintEnd_toStartOf="@+id/tvItemHistoricoQuantidade"
+            app:layout_constraintStart_toStartOf="@+id/tvItemHistoricoCod" />
+
+        <TextView
+            android:id="@+id/tvItemHistoricoQuantidade"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginStart="6dp"
+            app:layout_constraintStart_toEndOf="@+id/tvLabelQuantidade"
+            app:layout_constraintTop_toBottomOf="@+id/tvItemHistoricoCod"
+            tools:text="12 cotas" />
+
+        <TextView
+            android:id="@+id/tvLabelValor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Valor:"
+            android:textSize="14sp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/tvItemHistoricoValor"
+            app:layout_constraintEnd_toStartOf="@+id/tvItemHistoricoValor"
+            app:layout_constraintStart_toStartOf="@+id/tvLabelQuantidade"/>
+
+        <TextView
+            android:id="@+id/tvItemHistoricoValor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginStart="6dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tvLabelValor"
+            app:layout_constraintTop_toBottomOf="@+id/tvItemHistoricoQuantidade"
+            tools:text="R$ 1.200,00" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>
