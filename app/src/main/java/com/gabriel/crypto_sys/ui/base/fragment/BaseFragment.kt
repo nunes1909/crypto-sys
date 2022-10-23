@@ -1,4 +1,4 @@
-package com.gabriel.crypto_sys.ui.base
+package com.gabriel.crypto_sys.ui.base.fragment
 
 import android.os.Bundle
 import android.view.*

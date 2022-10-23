@@ -10,19 +10,14 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
 
-class CarteiraViewModel(
-    private val firebaseRepository: FirebaseRepository,
-    private val carteiraRepository: CarteiraRepository
-) : ViewModel() {
+class CarteiraViewModel(private val carteiraRepository: CarteiraRepository) : ViewModel() {
 
     private val _carteira = MutableLiveData<Carteira?>()
     val carteira = _carteira as LiveData<Carteira?>
 
-    suspend fun getCarteiraAtual() {
-        firebaseRepository.getUserAtual()?.uid?.let { userId ->
-            carteiraRepository.getCarteiraAtual(userId).collect { carteira ->
-                _carteira.value = carteira
-            }
+    suspend fun getCarteiraAtual(userId: String) {
+        carteiraRepository.getCarteiraAtual(userId).collect { carteira ->
+            _carteira.value = carteira
         }
     }
 

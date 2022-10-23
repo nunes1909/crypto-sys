@@ -15,7 +15,7 @@ data class Transacao(
     @ColumnInfo(name = "QTD")
     val quantidade: Int? = null,
     @ColumnInfo(name = "VALOR")
-    val valor: Double? = null,
+    val valor: Int? = null,
     @ColumnInfo(name = "ID_CARTEIRA")
-    val carteiraId: String? = null,
+    var carteiraId: String? = null,
 ) : Serializable

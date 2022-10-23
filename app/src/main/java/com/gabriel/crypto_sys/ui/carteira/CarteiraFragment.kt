@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.lifecycleScope
 import com.gabriel.crypto_sys.data.local.carteira.model.Carteira
 import com.gabriel.crypto_sys.databinding.FragmentCarteiraBinding
-import com.gabriel.crypto_sys.ui.base.BaseFragment
+import com.gabriel.crypto_sys.ui.base.fragment.BaseFragment
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -21,7 +21,9 @@ class CarteiraFragment : BaseFragment<FragmentCarteiraBinding, CarteiraViewModel
         observerCarteira()
     }
 
-    private fun buscaCarteiraAtual() = lifecycleScope.launch { viewModel.getCarteiraAtual() }
+    private fun buscaCarteiraAtual() {
+        lifecycleScope.launch { viewModel.getCarteiraAtual(getUserAtual()!!.uid) }
+    }
 
     private fun observerCarteira() {
         viewModel.carteira.observe(viewLifecycleOwner) { carteira ->

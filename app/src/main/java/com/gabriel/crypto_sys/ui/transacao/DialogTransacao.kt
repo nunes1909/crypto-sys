@@ -1,18 +1,20 @@
-package com.gabriel.crypto_sys.ui.negociar
+package com.gabriel.crypto_sys.ui.transacao
 
 import android.app.AlertDialog
 import android.app.Dialog
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.view.View
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
+import com.gabriel.crypto_sys.data.local.carteira.model.Carteira
 import com.gabriel.crypto_sys.databinding.DialogNegociarBinding
 import com.gabriel.crypto_sys.ui.carteira.CarteiraViewModel
-import com.gabriel.crypto_sys.utils.extensions.toast
+import com.gabriel.crypto_sys.ui.transacao.validaTransacao.ValidaCompra
+import com.gabriel.crypto_sys.utils.state.ResourceState
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.launch
+import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class DialogTransacao : DialogFragment() {
@@ -21,12 +23,14 @@ class DialogTransacao : DialogFragment() {
     private val args: DialogTransacaoArgs by navArgs()
     private val transViewModel: TransacaoViewModel by viewModel()
     private val cartViewModel: CarteiraViewModel by viewModel()
+    private val firebaseAuth: FirebaseAuth by inject()
+    private var carteira: Carteira? = null
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val builder = AlertDialog.Builder(context)
         builder.setView(createView())
         lifecycleScope.launch {
-            cartViewModel.getCarteiraAtual()
+            cartViewModel.getCarteiraAtual(firebaseAuth.uid!!)
         }
         lifecycleScope.launch {
             transViewModel.getTransacaoAtual(args.codigo, args.carteiraId)
@@ -39,7 +43,7 @@ class DialogTransacao : DialogFragment() {
         configuraComponentes()
         observerCarteiraAtual()
         observerTransacoesAtuais()
-        configuraTextChange()
+        configuraCompra()
         return binding.root
     }
 
@@ -51,6 +55,7 @@ class DialogTransacao : DialogFragment() {
     private fun observerCarteiraAtual() {
         cartViewModel.carteira.observe(this) {
             binding.tvNegociarSaldoAtual.text = "R$ ${it!!.saldo}"
+            carteira = it
         }
     }
 
@@ -61,22 +66,28 @@ class DialogTransacao : DialogFragment() {
         }
     }
 
-    private fun configuraTextChange() {
-        binding.etQuantidade.addTextChangedListener(searchMoviesWatcher())
-    }
+    private fun configuraCompra() = with(binding) {
+        btnNegociarComprar.setOnClickListener {
+            val compra = etQuantidade.text.toString().takeIf { it.trim().isNotEmpty() } ?: "0"
 
-    private fun searchMoviesWatcher() = object : TextWatcher {
-        override fun onTextChanged(query: CharSequence, p1: Int, p2: Int, p3: Int) {
-            binding.tvNegociarValorTotal.text =
-                (args.precoAtual * query.toString().toInt()).toString()
-        }
+            val resource = ValidaCompra().regraCalculoTransacao(
+                precoAtual = args.precoAtual,
+                quantidade = compra.toInt(),
+                saldo = carteira?.saldo ?: 0,
+                codigo = args.codigo
+            )
 
-        override fun beforeTextChanged(query: CharSequence, p1: Int, p2: Int, p3: Int) {
-            // Sem implementação
-        }
-
-        override fun afterTextChanged(p0: Editable?) {
-            // Sem implementação
+            when (resource) {
+                is ResourceState.Success -> {
+                    transViewModel.salvaTransacao(
+                        resource.data?.apply { this.carteiraId = args.carteiraId }!!
+                    )
+                    dismiss()
+                }
+                else -> {
+                    etQuantidade.error = resource.message
+                }
+            }
         }
     }
 }

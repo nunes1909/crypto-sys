@@ -4,13 +4,12 @@ import com.gabriel.crypto_sys.data.local.transacao.dao.TransacaoDao
 import com.gabriel.crypto_sys.data.local.transacao.model.Transacao
 import kotlinx.coroutines.flow.Flow
 
-class TransacaoRepository(private val dao: TransacaoDao) {
-
+class TransacaoRepository(private val transacaoDao: TransacaoDao) {
     fun salvaTransacao(transacao: Transacao) {
-        dao.salva(transacao = transacao)
+        transacaoDao.salva(transacao = transacao)
     }
 
     fun getTransacoes(cod: String, carteiraId: String): Flow<List<Transacao>> {
-        return dao.getTransacoes(cod, carteiraId)
+        return transacaoDao.getTransacoes(cod, carteiraId)
     }
 }

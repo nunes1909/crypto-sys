@@ -14,7 +14,7 @@ import com.gabriel.crypto_sys.ui.carteira.CarteiraViewModel
 import com.gabriel.crypto_sys.ui.coins.CoinsViewModel
 import com.gabriel.crypto_sys.ui.detalhes.DetalhesViewModel
 import com.gabriel.crypto_sys.ui.login.LoginViewModel
-import com.gabriel.crypto_sys.ui.negociar.TransacaoViewModel
+import com.gabriel.crypto_sys.ui.transacao.TransacaoViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -55,8 +55,8 @@ val viewModelModules = module {
     viewModel<CadastroViewModel> { CadastroViewModel(get()) }
     viewModel<CoinsViewModel> { CoinsViewModel(get()) }
     viewModel<DetalhesViewModel> { DetalhesViewModel(get()) }
-    viewModel<CarteiraViewModel> { CarteiraViewModel(get(), get()) }
-    viewModel<TransacaoViewModel> { TransacaoViewModel(get()) }
+    viewModel<CarteiraViewModel> { CarteiraViewModel(get()) }
+    viewModel<TransacaoViewModel> { TransacaoViewModel(get(), get(), get()) }
 }
 
 val firebaseModule = module {

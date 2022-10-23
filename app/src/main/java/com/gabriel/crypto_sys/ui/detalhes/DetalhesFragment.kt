@@ -10,9 +10,7 @@ import com.gabriel.crypto_sys.data.local.carteira.model.Carteira
 import com.gabriel.crypto_sys.data.local.transacao.model.Transacao
 import com.gabriel.crypto_sys.data.remote.coin.model.CoinResponse
 import com.gabriel.crypto_sys.databinding.FragmentDetalhesBinding
-import com.gabriel.crypto_sys.ui.base.BaseFragment
-import com.gabriel.crypto_sys.ui.carteira.CarteiraViewModel
-import com.gabriel.crypto_sys.ui.negociar.TransacaoViewModel
+import com.gabriel.crypto_sys.ui.base.fragment.BaseFragment
 import com.gabriel.crypto_sys.utils.extensions.toast
 import com.gabriel.crypto_sys.utils.state.ResourceState
 import kotlinx.coroutines.launch

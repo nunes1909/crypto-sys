@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.gabriel.crypto_sys.databinding.FragmentCoinsBinding
-import com.gabriel.crypto_sys.ui.base.BaseFragment
+import com.gabriel.crypto_sys.ui.base.fragment.BaseFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class CoinsFragment : BaseFragment<FragmentCoinsBinding, CoinsViewModel>() {
