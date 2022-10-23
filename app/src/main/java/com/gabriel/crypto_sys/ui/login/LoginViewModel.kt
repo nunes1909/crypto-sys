@@ -19,10 +19,6 @@ class LoginViewModel(private val repository: FirebaseRepository) : ViewModel() {
         return false
     }
 
-//    init {
-//        desloga()
-//    }
-
     fun desloga() {
         repository.desloga()
     }

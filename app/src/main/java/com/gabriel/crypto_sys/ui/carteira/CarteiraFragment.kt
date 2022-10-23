@@ -34,37 +34,32 @@ class CarteiraFragment : BaseFragment<FragmentCarteiraBinding, CarteiraViewModel
     private fun configuraComponentes(carteira: Carteira) {
         defineSaldo(carteira)
         goDepositar(carteira)
-//        goSacar(carteira)
+        goSacar(carteira)
     }
 
     private fun goDepositar(carteira: Carteira) {
         binding.btnCarteiraDepositar.setOnClickListener {
-            val action = CarteiraFragmentDirections.acaoCarteiraParaDialogCarteira(
-                depositar = true,
-                carteira = carteira
-            )
-            controller.navigate(action)
+            goDialogCarteira(depositar = true, carteira = carteira)
         }
     }
-//
-//    private fun goSacar(carteira: Carteira) {
-//        binding.btnCarteiraSacar.setOnClickListener {
-//            goDialogCarteira(carteira, depositar = false)
-//        }
-//    }
+
+    private fun goSacar(carteira: Carteira) {
+        binding.btnCarteiraSacar.setOnClickListener {
+            goDialogCarteira(depositar = false, carteira = carteira)
+        }
+    }
 
     private fun defineSaldo(carteira: Carteira) {
         binding.tvCarteiraSaldo.text = "R$ ${carteira.saldo}"
     }
 
-//    private fun goDialogCarteira(carteira: Carteira, depositar: Boolean) {
-//        val action = CarteiraFragmentDirections.acaoCarteiraParaDialogCarteira(
-//            id = carteira.id,
-//            saldo = carteira.saldo ?: "0",
-//            depositar = depositar
-//        )
-//        controller.navigate(action)
-//    }
+    private fun goDialogCarteira(depositar: Boolean, carteira: Carteira) {
+        val action = CarteiraFragmentDirections.acaoCarteiraParaDialogCarteira(
+            depositar = depositar,
+            carteira = carteira
+        )
+        controller.navigate(action)
+    }
 
     override fun getViewBinding(
         inflater: LayoutInflater,

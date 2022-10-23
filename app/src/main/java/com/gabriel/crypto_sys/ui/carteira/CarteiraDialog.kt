@@ -8,8 +8,11 @@ import androidx.fragment.app.DialogFragment
 import androidx.navigation.fragment.navArgs
 import com.gabriel.crypto_sys.data.local.carteira.model.Carteira
 import com.gabriel.crypto_sys.databinding.DialogCarteiraBinding
+import com.gabriel.crypto_sys.ui.carteira.validaCarteira.ValidaDeposito
+import com.gabriel.crypto_sys.ui.carteira.validaCarteira.ValidaSaque
 import com.gabriel.crypto_sys.utils.extensions.show
 import com.gabriel.crypto_sys.utils.extensions.toast
+import com.gabriel.crypto_sys.utils.state.ResourceState
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class CarteiraDialog : DialogFragment() {
@@ -32,17 +35,19 @@ class CarteiraDialog : DialogFragment() {
 
     private fun createView(): View {
         binding = DialogCarteiraBinding.inflate(layoutInflater)
-        configuraComponentes()
+        defineSaldoNaTela()
+        defineBotoesNaTela()
+        configuraDeposito()
+        configuraSaque()
         return binding.root
     }
 
-    private fun configuraComponentes() {
-        defineBotoesDeAcao()
-        configuraSaldo()
-        configuraAcao()
+    private fun defineSaldoNaTela() {
+        val saldo = "R$ ${args.carteira.saldo}"
+        binding.tvSaldo.text = saldo
     }
 
-    private fun defineBotoesDeAcao() {
+    private fun defineBotoesNaTela() {
         if (args.depositar) {
             binding.btnDepositar.show()
         } else {
@@ -50,22 +55,48 @@ class CarteiraDialog : DialogFragment() {
         }
     }
 
-    private fun configuraSaldo() {
-        val saldo = "R$ ${args.carteira.saldo ?: 0}"
-        binding.tvSaldo.text = saldo
-    }
-
-    private fun configuraAcao() = with(binding) {
+    private fun configuraDeposito() = with(binding) {
         btnDepositar.setOnClickListener {
-            if (etValor.toString().trim().isBlank()) {
-                toast("Para depositar, preencha um valor.")
-            } else {
-                viewModel.salvaCarteira(
-                    carteira.apply { this.saldo += etValor.text.toString().toInt() }
-                )
-                dismiss()
+            val deposito = etValor.text.toString().takeIf { it.trim().isNotEmpty() } ?: "0"
+
+            val resource = ValidaDeposito().regraCalculo(
+                valor = deposito.toInt(),
+                carteira = carteira
+            )
+
+            when (resource) {
+                is ResourceState.Success -> {
+                    viewModel.salvaCarteira(resource.data!!)
+                    dismiss()
+                }
+                else -> {
+                    etValor.error = resource.message
+                }
             }
 
         }
     }
+
+    private fun configuraSaque() = with(binding) {
+        btnSacar.setOnClickListener {
+            val saque = etValor.text.toString().takeIf { it.trim().isNotEmpty() } ?: "0"
+
+            val resource = ValidaSaque().regraCalculo(
+                valor = saque.toInt(),
+                carteira = carteira
+            )
+
+            when (resource) {
+                is ResourceState.Success -> {
+                    viewModel.salvaCarteira(resource.data!!)
+                    dismiss()
+                }
+                else -> {
+                    etValor.error = resource.message
+                }
+            }
+
+        }
+    }
+
 }
