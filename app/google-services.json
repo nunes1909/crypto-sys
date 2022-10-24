@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "84333398883",
+    "project_id": "crypto-sys",
+    "storage_bucket": "crypto-sys.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:84333398883:android:ae16e05d9d04d20c86a156",
+        "android_client_info": {
+          "package_name": "com.gabriel.crypto_sys"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "84333398883-7f785uujao9ce0hrqljnta8tsd87jd57.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD3UsP7tsLg-13vfg3viF2WsOq0jAoPeqw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "84333398883-7f785uujao9ce0hrqljnta8tsd87jd57.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

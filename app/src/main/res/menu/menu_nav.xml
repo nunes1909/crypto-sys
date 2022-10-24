@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/coinsFragment"
+        android:icon="@drawable/ic_action_coins"
+        android:title="Coins"/>
+
+    <item
+        android:id="@+id/carteiraFragment"
+        android:icon="@drawable/ic_action_carteira"
+        android:title="Carteira"/>
+
+</menu>
