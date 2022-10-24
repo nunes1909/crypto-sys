@@ -4,17 +4,23 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.datastore.preferences.core.booleanPreferencesKey
+import androidx.datastore.preferences.core.edit
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.gabriel.crypto_sys.databinding.FragmentLoginBinding
 import com.gabriel.crypto_sys.data.remote.firebase.model.Usuario
+import com.gabriel.crypto_sys.utils.constants.KEY_TOOLS
 import com.gabriel.crypto_sys.utils.extensions.snackBar
+import com.gabriel.crypto_sys.utils.preferences.dataStore
+import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class LoginFragment : Fragment() {
 
-    private val viewModel: LoginViewModel by viewModel()
     private val binding by lazy { FragmentLoginBinding.inflate(layoutInflater) }
+    private val viewModel: LoginViewModel by viewModel()
     private val controller by lazy { findNavController() }
 
     override fun onCreateView(
@@ -27,6 +33,13 @@ class LoginFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         goLogar()
         goCadastro()
+        configuraVisibilityBottomNav()
+    }
+
+    private fun configuraVisibilityBottomNav() = lifecycleScope.launch {
+        requireContext().dataStore.edit { preferences ->
+            preferences[booleanPreferencesKey(KEY_TOOLS)] = false
+        }
     }
 
     private fun goLogar() {
@@ -46,7 +59,7 @@ class LoginFragment : Fragment() {
     }
 
     private fun autenticaUsuario(campoEmail: String, campoSenha: String) {
-        viewModel.autentica(
+        viewModel.autenticaUsuario(
             Usuario(
                 email = campoEmail,
                 senha = campoSenha

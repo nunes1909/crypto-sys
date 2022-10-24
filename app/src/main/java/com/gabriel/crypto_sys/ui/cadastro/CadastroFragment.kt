@@ -4,15 +4,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.datastore.preferences.core.booleanPreferencesKey
+import androidx.datastore.preferences.core.edit
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.gabriel.crypto_sys.databinding.FragmentCadastroUsuarioBinding
 import com.gabriel.crypto_sys.data.remote.firebase.model.Usuario
+import com.gabriel.crypto_sys.utils.constants.KEY_TOOLS
 import com.gabriel.crypto_sys.utils.extensions.snackBar
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers.IO
+import com.gabriel.crypto_sys.utils.preferences.dataStore
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class CadastroFragment : Fragment() {
@@ -30,6 +32,13 @@ class CadastroFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         configuraCadastroUsuario()
+        configuraVisibilityBottomNav()
+    }
+
+    private fun configuraVisibilityBottomNav() = lifecycleScope.launch {
+        requireContext().dataStore.edit { preferences ->
+            preferences[booleanPreferencesKey(KEY_TOOLS)] = false
+        }
     }
 
     private fun configuraCadastroUsuario() {

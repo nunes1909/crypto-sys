@@ -15,6 +15,7 @@ import com.gabriel.crypto_sys.ui.coins.CoinsViewModel
 import com.gabriel.crypto_sys.ui.detalhes.DetalhesViewModel
 import com.gabriel.crypto_sys.ui.login.LoginViewModel
 import com.gabriel.crypto_sys.ui.transacao.TransacaoViewModel
+import com.gabriel.crypto_sys.utils.constants.DB_NAME
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -31,7 +32,7 @@ val localModules = module {
         Room.databaseBuilder(
             get(),
             CryptoSysDataBase::class.java,
-            "coins.db"
+            DB_NAME
         ).fallbackToDestructiveMigration().build()
     }
 }

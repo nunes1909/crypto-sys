@@ -12,11 +12,11 @@ class CarteiraRepository(private val dao: CarteiraDao) {
         carteira?.let { dao.salva(it) }
     }
 
-    fun verifyIfExists(carteiraId: String): Boolean {
-        return dao.verifyIfCarteiraExists(carteiraId = carteiraId)
-    }
-
     suspend fun getCarteiraAtual(usuarioId: String): Flow<Carteira?> = withContext(IO) {
         dao.getCarteira(id = usuarioId)
+    }
+
+    fun verifyIfExists(carteiraId: String): Boolean {
+        return dao.verifyIfCarteiraExists(carteiraId = carteiraId)
     }
 }

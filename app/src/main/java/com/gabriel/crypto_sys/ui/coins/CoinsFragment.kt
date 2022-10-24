@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.gabriel.crypto_sys.databinding.FragmentCoinsBinding
 import com.gabriel.crypto_sys.ui.base.BaseFragment
 import com.gabriel.crypto_sys.ui.coins.adapter.CoinAdapter
+import com.gabriel.crypto_sys.utils.constants.TITLE_COINS_FRAGMENT
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class CoinsFragment : BaseFragment<FragmentCoinsBinding, CoinsViewModel>() {
@@ -19,6 +20,7 @@ class CoinsFragment : BaseFragment<FragmentCoinsBinding, CoinsViewModel>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        activity?.actionBar?.title = TITLE_COINS_FRAGMENT
         configuraRecyler()
         configuraPesquisa()
         loadAll()
