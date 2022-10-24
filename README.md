@@ -1,8 +1,7 @@
 # Crypto SYS
 
 ## Índices:
-- Para acessar as animações do projeto:
-  - <a href="https://github.com/nunes1909/crypto-sys/wiki">Clique aqui</a>.
+- Para acessar as animações do projeto: <a href="https://github.com/nunes1909/crypto-sys/wiki">Clique aqui</a>.
 
 ## Sobre este projeto:
 A ideia deste aplicativo é:
