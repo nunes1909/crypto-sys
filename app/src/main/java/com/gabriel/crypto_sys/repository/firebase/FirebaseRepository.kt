@@ -70,7 +70,7 @@ class FirebaseRepository(
         }
     }
 
-    private fun salvaCarteira(userId: String) {
+    private fun salvaCarteira(userId: String) = CoroutineScope(IO).launch {
         carteiraRepository.salvaCarteira(Carteira(id = userId))
     }
 
