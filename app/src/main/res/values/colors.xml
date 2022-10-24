@@ -8,11 +8,11 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="colorPrimary">#4E4D4D</color>
-    <color name="colorPrimaryVariant">#7A7777</color>
-    <color name="colorOnPrimary">#ACACAC</color>
+    <color name="colorPrimary">#181A1E</color>
+    <color name="colorPrimaryVariant">#06130A</color>
+    <color name="colorOnPrimary">#143E3B</color>
 
-    <color name="colorSecondary">#585858</color>
-    <color name="colorSecondaryVariant">#7A7A7A</color>
+    <color name="colorSecondary">#060C0F</color>
+    <color name="colorSecondaryVariant">#061112</color>
     <color name="colorOnSecondary">#FFFFFF</color>
 </resources>
