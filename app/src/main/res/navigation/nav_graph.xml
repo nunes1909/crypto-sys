@@ -7,7 +7,7 @@
     <fragment
         android:id="@+id/coinsFragment"
         android:name="com.gabriel.crypto_sys.ui.coins.CoinsFragment"
-        android:label="FragmentCoins">
+        android:label="Cryptos">
         <action
             android:id="@+id/acaoCoinsParaDetalhes"
             app:destination="@id/fragmentDetalhes"
@@ -20,7 +20,7 @@
     <fragment
         android:id="@+id/carteiraFragment"
         android:name="com.gabriel.crypto_sys.ui.carteira.CarteiraFragment"
-        android:label="FragmentCarteira" >
+        android:label="Carteira">
         <action
             android:id="@+id/acaoCarteiraParaDetalhes"
             app:destination="@id/fragmentDetalhes"
@@ -48,7 +48,7 @@
     <fragment
         android:id="@+id/fragmentDetalhes"
         android:name="com.gabriel.crypto_sys.ui.detalhes.DetalhesFragment"
-        android:label="FragmentDetalhes" >
+        android:label="Detalhes">
         <argument
             android:name="coin"
             app:argType="com.gabriel.crypto_sys.data.local.coin.model.Coin" />
@@ -59,7 +59,7 @@
     <fragment
         android:id="@+id/fragmentLogin"
         android:name="com.gabriel.crypto_sys.ui.login.LoginFragment"
-        android:label="FragmentLogin" >
+        android:label="Login">
         <action
             android:id="@+id/acaoLoginParaCoins"
             app:destination="@id/coinsFragment"
@@ -89,8 +89,7 @@
         app:popUpTo="@id/coinsFragment" />
     <dialog
         android:id="@+id/negociarDialog"
-        android:name="com.gabriel.crypto_sys.ui.transacao.DialogTransacao"
-        android:label="DialogNegociar" >
+        android:name="com.gabriel.crypto_sys.ui.transacao.DialogTransacao">
         <argument
             android:name="codigo"
             app:argType="string" />
@@ -104,11 +103,10 @@
     <fragment
         android:id="@+id/cadastroFragment"
         android:name="com.gabriel.crypto_sys.ui.cadastro.CadastroFragment"
-        android:label="CadastroFragment" />
+        android:label="Cadastro" />
     <dialog
         android:id="@+id/carteiraDialog"
-        android:name="com.gabriel.crypto_sys.ui.carteira.CarteiraDialog"
-        android:label="CarteiraDialog" >
+        android:name="com.gabriel.crypto_sys.ui.carteira.CarteiraDialog">
         <argument
             android:name="depositar"
             app:argType="boolean" />
@@ -118,8 +116,7 @@
     </dialog>
     <dialog
         android:id="@+id/historicoDialog"
-        android:name="com.gabriel.crypto_sys.ui.carteira.HistoricoDialog"
-        android:label="HistoricoDialog" >
+        android:name="com.gabriel.crypto_sys.ui.carteira.HistoricoDialog">
         <argument
             android:name="carteiraId"
             app:argType="string" />

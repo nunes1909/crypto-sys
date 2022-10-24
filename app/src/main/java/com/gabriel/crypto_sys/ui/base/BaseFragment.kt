@@ -51,7 +51,7 @@ abstract class BaseFragment<viewBinding : ViewBinding, viewModel : ViewModel> : 
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.menu_toolbar, menu)
+        inflater.inflate(R.menu.menu_acbar, menu)
         super.onCreateOptionsMenu(menu, inflater)
     }
 

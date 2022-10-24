@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.gabriel.crypto_sys.R
@@ -45,6 +46,10 @@ class MainActivity : AppCompatActivity() {
             .findFragmentById(R.id.fragmentContainerView) as NavHostFragment
 
         val navController = navHostFragment.navController
+
+        navController.addOnDestinationChangedListener { navController, navDestination, bundle ->
+            title = navDestination.label
+        }
 
         binding.bottomNavigation.apply {
             setupWithNavController(navController)
