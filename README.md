@@ -1,12 +1,16 @@
 # Crypto SYS
 
+## Índices:
+- Para acessar as animações do projeto: <a href="https://github.com/nunes1909/crypto-sys/wiki">Clique aqui</a>.
+
 ## Sobre este projeto:
 A ideia deste aplicativo é:
+- Cadastrar e Logar usuários.
 - Consumir a API <a href="https://www.mercadobitcoin.com.br/api-doc/">Mercado Bitcoin</a>.
 - Listar Crypto moedas.
   - Obter os preços das ultimas 24 hrs.
 - Realizar transações locais com as Cryptos.
-- Realizar depositos e saques em uma carteira local.- 
+- Realizar depositos e saques em uma carteira local.
 
 ## Motivação:
 Este aplicativo faz parte do meu portfólio pessoal e eu o desenvolvi visando os meus estudos e a prática dos meus conhecimentos. Caso você faça o download deste repositório e observe pontos de melhoria, seja no código, estrutura, UI/UX, etc... Ou queira apenas dar um simples feedback eu ficarei extremamente feliz. Estou aqui para aprender e me tornar um desenvolvedor cada vez melhor. 😁
@@ -18,10 +22,11 @@ Você pode entrar em contato comigo através do <a href="https://www.linkedin.co
 - Feature de Cadastro.
 - Feature de Listagem de Cryptos.
 - Feature de Detalhes.
+  - Maior e menor preço das ultimas 24hrs e o preço atual.
 - Feature de Negociação: 
   - Compra e Venda de Cryptos.
 - Feature de Carteira.
-  - Feature de Deposito, Saque e Histórico de Transações.
+  - Deposito, Saque e Histórico de Transações.
 
 ## Observações:
 - Este projeto ainda não da suporte para Dark Theme.
@@ -32,6 +37,7 @@ Você pode entrar em contato comigo através do <a href="https://www.linkedin.co
   - ViewModel, Fragments, LiveData, Navigation, Flow, Room, etc...
 - Injeção de dependência com Koin.
 - Consumo de API Rest com Retrofit.
+- Cadastro e Login de usuários com Firebase Authentication.
 
 ## Formas de acessar o app:
 - Download do Apk na release do projeto.
