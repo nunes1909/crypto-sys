@@ -43,8 +43,8 @@ class CadastroFragment : Fragment() {
 
     private fun configuraCadastroUsuario() {
         binding.btnCadastrar.setOnClickListener {
-            getValuesCadastro()
             limpaErrorCampos()
+            getValuesCadastro()
         }
     }
 
