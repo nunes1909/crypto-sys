@@ -61,15 +61,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Senha"
-            android:inputType="textEmailAddress" />
+            android:inputType="number" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/btnCadastrar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Cadastrar"
         android:layout_marginTop="16dp"
+        android:padding="16dp"
+        android:text="Cadastrar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@id/containerSenhaConfirmaCadastro"
         app:layout_constraintHorizontal_bias="0.5"
