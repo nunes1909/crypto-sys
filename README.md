@@ -28,9 +28,6 @@ Você pode entrar em contato comigo através do <a href="https://www.linkedin.co
 - Feature de Carteira.
   - Deposito, Saque e Histórico de Transações.
 
-## Observações:
-- Este projeto ainda não da suporte para Dark Theme.
-
 ## Componentes:
 - Architecture MVVM.
 - Architecture Components:
