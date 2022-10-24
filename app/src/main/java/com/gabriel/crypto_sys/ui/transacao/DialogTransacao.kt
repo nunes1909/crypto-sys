@@ -19,11 +19,11 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class DialogTransacao : DialogFragment() {
 
-    private lateinit var binding: DialogNegociarBinding
-    private val args: DialogTransacaoArgs by navArgs()
     private val transViewModel: TransacaoViewModel by viewModel()
     private val cartViewModel: CarteiraViewModel by viewModel()
+    private val args: DialogTransacaoArgs by navArgs()
     private val firebaseAuth: FirebaseAuth by inject()
+    private lateinit var binding: DialogNegociarBinding
     private var carteira: Carteira? = null
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
@@ -68,7 +68,9 @@ class DialogTransacao : DialogFragment() {
 
     private fun configuraCompra() = with(binding) {
         btnNegociarComprar.setOnClickListener {
-            val compra = etQuantidade.text.toString().takeIf { it.trim().isNotEmpty() } ?: "0"
+            val compra = etQuantidade.text.toString().takeIf {
+                it.trim().isNotEmpty()
+            } ?: "0"
 
             val resource = ValidaCompra().regraCalculoTransacao(
                 precoAtual = args.precoAtual,

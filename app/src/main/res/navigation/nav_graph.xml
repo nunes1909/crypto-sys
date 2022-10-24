@@ -54,7 +54,7 @@
             app:argType="com.gabriel.crypto_sys.data.local.coin.model.Coin" />
         <action
             android:id="@+id/action_fragmentDetalhes_to_dialogNegociar"
-            app:destination="@id/dialogNegociar" />
+            app:destination="@id/negociarDialog" />
     </fragment>
     <fragment
         android:id="@+id/fragmentLogin"
@@ -88,7 +88,7 @@
         app:popExitAnim="@anim/nav_default_pop_exit_anim"
         app:popUpTo="@id/coinsFragment" />
     <dialog
-        android:id="@+id/dialogNegociar"
+        android:id="@+id/negociarDialog"
         android:name="com.gabriel.crypto_sys.ui.transacao.DialogTransacao"
         android:label="DialogNegociar" >
         <argument

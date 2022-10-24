@@ -20,12 +20,8 @@ import kotlin.math.roundToInt
 class DetalhesFragment : BaseFragment<FragmentDetalhesBinding, DetalhesViewModel>() {
 
     override val viewModel: DetalhesViewModel by viewModel()
-
     private val args: DetalhesFragmentArgs by navArgs()
     private var precoAtual: Double = 0.0
-
-    private lateinit var carteiraGlobal: Carteira
-    private lateinit var transacaoGlobal: Transacao
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -36,9 +32,7 @@ class DetalhesFragment : BaseFragment<FragmentDetalhesBinding, DetalhesViewModel
         configuraClickNegociar()
     }
 
-    private suspend fun getDetalhes(cod: String) {
-        viewModel.getDetalhes(cod = cod)
-    }
+    private suspend fun getDetalhes(cod: String) = viewModel.getDetalhes(cod = cod)
 
     private fun observerDetalhes() {
         viewModel.detalhes.observe(viewLifecycleOwner) { resource ->

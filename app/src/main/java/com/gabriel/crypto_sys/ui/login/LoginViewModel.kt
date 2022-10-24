@@ -8,7 +8,7 @@ import com.gabriel.crypto_sys.utils.state.ResourceState
 
 class LoginViewModel(private val repository: FirebaseRepository) : ViewModel() {
 
-    fun autentica(usuario: Usuario): LiveData<ResourceState<Boolean>> {
+    fun autenticaUsuario(usuario: Usuario): LiveData<ResourceState<Boolean>> {
         return repository.autenticaUsuario(usuario = usuario)
     }
 
