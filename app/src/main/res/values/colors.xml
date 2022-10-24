@@ -8,6 +8,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
+    <!-- theme light -->
     <color name="colorPrimary">#181A1E</color>
     <color name="colorPrimaryVariant">#06130A</color>
     <color name="colorOnPrimary">#143E3B</color>
@@ -15,4 +16,15 @@
     <color name="colorSecondary">#060C0F</color>
     <color name="colorSecondaryVariant">#061112</color>
     <color name="colorOnSecondary">#FFFFFF</color>
+    <!-- endregion -->
+
+    <!-- theme dark -->
+    <color name="colorPrimaryDark">#303563</color>
+    <color name="colorPrimaryVariantDark">#504099</color>
+    <color name="colorOnPrimaryDark">#974EC2</color>
+
+    <color name="colorSecondaryDark">#FE7BBF</color>
+    <color name="colorSecondaryVariantDark">#DD80B1</color>
+    <color name="colorOnSecondaryDark">#FFFFFF</color>
+    <!-- endregion -->
 </resources>
