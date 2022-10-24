@@ -65,10 +65,10 @@ class DetalhesFragment : BaseFragment<FragmentDetalhesBinding, DetalhesViewModel
             tvDetalhesCoinTitle.text = args.coin.cod
 
             val menorPreco = coinResponse.menorPreco.roundToInt() / 100.00
-            tvDetalhesMaiorPreco.text = "R$ $menorPreco"
+            tvDetalhesMenorPreco.text = "R$ $menorPreco"
 
             val maiorPreco = coinResponse.maiorPreco.roundToInt() / 100.00
-            tvDetalhesMenorPreco.text = "R$ $maiorPreco"
+            tvDetalhesMaiorPreco.text = "R$ $maiorPreco"
 
             precoAtual = coinResponse.precoAtual.roundToInt() / 100.00
             tvDetalhesPrecoAtual.text = "R$ $precoAtual"
