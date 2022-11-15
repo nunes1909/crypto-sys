@@ -29,12 +29,15 @@ Você pode entrar em contato comigo através do <a href="https://www.linkedin.co
   - Deposito, Saque e Histórico de Transações.
 
 ## Componentes:
-- Architecture MVVM.
 - Architecture Components:
   - ViewModel, Fragments, LiveData, Navigation, Flow, Room, etc...
 - Injeção de dependência com Koin.
 - Consumo de API Rest com Retrofit.
+- Armazenamento de dados com DataStore.
 - Cadastro e Login de usuários com Firebase Authentication.
+
+# Conceitos:
+- Architecture MVVM.
 
 ## Formas de acessar o app:
 - Download do Apk na release do projeto.
