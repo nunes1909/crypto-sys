@@ -7,9 +7,9 @@
 A ideia deste aplicativo é:
 - Cadastrar e Logar usuários.
 - Consumir a API <a href="https://www.mercadobitcoin.com.br/api-doc/">Mercado Bitcoin</a>.
-- Listar Crypto moedas.
+- Listar Cripto moedas.
   - Obter os preços das ultimas 24 hrs.
-- Realizar transações locais com as Cryptos.
+- Realizar transações locais com as Cripto.
 - Realizar depositos e saques em uma carteira local.
 
 ## Motivação:
@@ -20,24 +20,24 @@ Você pode entrar em contato comigo através do <a href="https://www.linkedin.co
 ## Funcionalidades:
 - Feature de Login.
 - Feature de Cadastro.
-- Feature de Listagem de Cryptos.
+- Feature de Listagem de Criptos.
 - Feature de Detalhes.
   - Maior e menor preço das ultimas 24hrs e o preço atual.
 - Feature de Negociação: 
-  - Compra e Venda de Cryptos.
+  - Compra e Venda de Criptos.
 - Feature de Carteira.
   - Deposito, Saque e Histórico de Transações.
 
-## Observações:
-- Este projeto ainda não da suporte para Dark Theme.
-
 ## Componentes:
-- Architecture MVVM.
 - Architecture Components:
   - ViewModel, Fragments, LiveData, Navigation, Flow, Room, etc...
 - Injeção de dependência com Koin.
 - Consumo de API Rest com Retrofit.
+- Armazenamento de dados com DataStore.
 - Cadastro e Login de usuários com Firebase Authentication.
+
+# Conceitos:
+- Architecture MVVM.
 
 ## Formas de acessar o app:
 - Download do Apk na release do projeto.
