@@ -12,6 +12,14 @@ A ideia deste aplicativo é:
 - Realizar transações locais com as Cripto.
 - Realizar depositos e saques em uma carteira local.
 
+## Observação:
+<b>Esse projeto foi um desafio proposto por um amigo, que se deu em desenvolver em 5 dias um aplicativo que consumisse a API o Mercado Bitcoin. Esse App deveria ser capaz de exibir uma listagem de Cripto Moedas, e realizar transações locais.
+
+Então aproveitei os meus estudos de Firebase, e implementei um Crud de usuários com o Firebase Authentication. Neste App cada usuário remoto possui uma carteira local, e nela é possível depositar, sacar e realizar transações locais com as Cripto moedas disponíveis.
+
+Como eu tive pouco tempo pra fazer, e desenvolver um projeto de compra e venda com uma conta atrelada envolve muita regra de negócio, com certeza eu posso ter deixado pontos de melhoria passarem. Mas de qual quer forma, fiquei satisfeito com o resultado.
+</b>
+
 ## Motivação:
 Este aplicativo faz parte do meu portfólio pessoal e eu o desenvolvi visando os meus estudos e a prática dos meus conhecimentos. Caso você faça o download deste repositório e observe pontos de melhoria, seja no código, estrutura, UI/UX, etc... Ou queira apenas dar um simples feedback eu ficarei extremamente feliz. Estou aqui para aprender e me tornar um desenvolvedor cada vez melhor. 😁
 
